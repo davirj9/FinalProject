@@ -17,7 +17,6 @@ public class SecurityUser implements UserDetails{
 		return null;
 	}
 
-
 	public String getPassword() {
 		if(getUsuario() != null)
 			return getUsuario().getNomeUsuario();
