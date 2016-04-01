@@ -15,7 +15,7 @@
 			<property name="javax.persistence.jdbc.password" value="admin" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/System" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-			<!-- <property name="hibernate.hbm2ddl.auto" value="create"/>  -->
+			<property name="hibernate.hbm2ddl.auto" value="create"/>  
 			<!--<property name="hibernate.default_schema" value="system"/>
 			 CONFIGURACAO --><!-- 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect " />

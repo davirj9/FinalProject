@@ -155,23 +155,24 @@
                 <h3 class="">Cadastrar</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" id="efetuarCadastroUsuario" 
+                			action="<%=request.getContextPath()%>/efetuarCadastroUsuario" method="POST">
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">Nome</label>
+                        <label class="control-label" for="inputNome">Nome</label>
                         <div class="controls">
-                            <input type="text" id="inputNome" placeholder="Email">
+                            <input name="nome" type="text" id="inputNome" placeholder="Nome">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Email</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="Email">
+                            <input name="email" type="text" id="inputEmail" placeholder="Email">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputPassword">Senha</label>
                         <div class="controls">
-                            <input type="password" id="inputPassword" placeholder="Password">
+                            <input name="password" type="password" id="inputPassword" placeholder="Password">
                         </div>
                     </div>
                     <div class="control-group">

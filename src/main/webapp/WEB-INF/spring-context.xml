@@ -23,20 +23,6 @@
   	 									   br.com.project.login,
   	 									   br.com.project.modelo" />
 	
-	<!-- <http auto-config="true">
-		
-	<intercept-url pattern="/**" access="ROLE_ADMIN" />
-    <form-login login-page="/carregarLogin" />
-	</http>
-	
-	<authentication-manager>
-		<authentication-provider>
-			<user-Service>
-				<user name="admin" password="admin" authorities="ROLE_ADMIN" />
-				<user name="user" password="user" authorities="ROLE_BASIC" />
-			</user-Service>
-		</authentication-provider>
-	</authentication-manager> -->
 
 	<!-- Seta anotaçoes para serem usadas pelo Spring--> 
 	 <context:annotation-config />

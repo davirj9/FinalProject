@@ -1,21 +1,30 @@
 package br.com.project.daoimpl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.sun.istack.internal.logging.Logger;
+import org.springframework.stereotype.Repository;
 
 import br.com.project.dao.UsuarioDAO;
-import br.com.project.login.AutenticaLogin;
+import br.com.project.modelo.Usuario;
 
+@Repository
 public class UsuarioDAOImpl implements UsuarioDAO{
 	
 	private EntityManager entityManager;
 	
-	@Autowired
-	private AutenticaLogin autenticaLogin;
+	@PersistenceContext
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+	
+	@Override
+	public Usuario salvar(Usuario usuario){
+		
+		usuario = entityManager.merge(usuario);
+		return usuario;
+	}
 	
 	//private static final Logger LOGGER = LoggerFactory.getLogger(UsuarioDAOImpl.class);
 	

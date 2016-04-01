@@ -61,7 +61,7 @@
                                 </li><!--
                                 --><li class="divider-vertical"></li>
 
-                                <!--Comessa o DropDown-->
+                                <!--Início o DropDown-->
 
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font><font>Suspensa </font></font><b class="caret"></b></a>
@@ -88,7 +88,7 @@
                                     </ul>
                                 </li>
 
-                                <!--Comessa o Formulario-->
+                                <!--Início o Formulario-->
                                 <form class="navbar-form pull-right">
                                     <Input  type="text"  placeholder="Informe seu cep" >
                                     <button type="submit" class="btn">
@@ -100,7 +100,7 @@
                                 <!--Termina o DropDown-->
                             </ul>
 
-                            <!--comessa cadastro-->
+                            <!--Início cadastro-->
                             <a href="#" class="btn btn-mini btn-primary" id="openBtn" style="
                                position: relative;
                                top: 5px;
