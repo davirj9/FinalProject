@@ -42,6 +42,11 @@ $(function() {
                             $("#cidade").val(dados.localidade);
                             $("#uf").val(dados.uf);
                             $("#ibge").val(dados.ibge);
+                            
+                            $("#rua").prop('disabled', 'disabled');
+                            $("#bairro").prop('disabled', 'disabled');
+                            $("#cidade").prop('disabled', 'disabled');
+                            $("#uf").prop('disabled', 'disabled');
                         } //end if.
                         else {
                             //CEP pesquisado não foi encontrado.
