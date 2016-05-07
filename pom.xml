@@ -23,6 +23,19 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.2.4.RELEASE</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		<!-- SPRING GERENCIANDO TRANSAÇÃO E INJETANDO ENTITYMANAGER  -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		
 
 		<!-- DEPENDÊNCIAS DO HIBERNATE -->
 		<dependency>
@@ -87,7 +100,46 @@
 			<artifactId>webjars-locator</artifactId>
 			<version>0.30</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.19</version>
+		</dependency>
+		
+		<!-- DEPENDÊNCIA DA JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		<!-- DEPENDÊNCIA DA API GOOGLE MAPS 
+		<dependency>
+			<groupId>com.google.maps</groupId>
+			<artifactId>google-maps-services</artifactId>
+			<version>0.1.12</version>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160212</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 </project>
