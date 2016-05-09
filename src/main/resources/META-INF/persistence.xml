@@ -6,6 +6,11 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		 <!--<jta-data-source>system</jta-data-source>  --> 
 		 <class>br.com.project.modelo.Usuario</class>
+		 <class>br.com.project.modelo.Empresa</class>
+		 <class>br.com.project.modelo.Cidade</class>
+		 <class>br.com.project.modelo.EnderecoEmpresa</class>
+		 <class>br.com.project.modelo.Estado</class>
+		 <class>br.com.project.modelo.PerfilEmpresa</class>
 			 <!--<jta-data-source>java:jboss/datasources/DanielDS_HML_NEW</jta-data-source>-->
 			 <!-- <class></class> -->
 		<properties>

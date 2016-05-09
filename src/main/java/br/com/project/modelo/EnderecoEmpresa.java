@@ -36,15 +36,25 @@ public class EnderecoEmpresa implements Serializable {
 	@OneToOne
 	private Empresa idtEmpresa;
 	
+	@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
+	@ManyToOne
+	private Cidade idt_estado;
+	
 	@JoinColumn(name = "idt_cidade", referencedColumnName = "idt_cidade")
 	@ManyToOne
-	private Cidade cidade;
+	private Cidade idt_cidade;
 
-	@Column(name = "descricao_endereco")  
-    private String dscEndereco;
-	
 	@Column(name = "bairro")
 	private String bairro;
+	
+	@Column(name = "logradouro")  
+    private String descricao_logradouro;
+	
+	@Column(name = "numero")  
+    private String numero;
+	
+	@Column(name="complemento_endereco")
+	private String complemento_endereco;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_inclusao")
@@ -69,20 +79,20 @@ public class EnderecoEmpresa implements Serializable {
 		this.idtEmpresa = idtEmpresa;
 	}
 
-	public Cidade getCidade() {
-		return cidade;
+	public Cidade getIdt_estado() {
+		return idt_estado;
 	}
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+	public void setIdt_estado(Cidade idt_estado) {
+		this.idt_estado = idt_estado;
 	}
 
-	public String getDscEndereco() {
-		return dscEndereco;
+	public Cidade getIdt_cidade() {
+		return idt_cidade;
 	}
 
-	public void setDscEndereco(String dscEndereco) {
-		this.dscEndereco = dscEndereco;
+	public void setIdt_cidade(Cidade idt_cidade) {
+		this.idt_cidade = idt_cidade;
 	}
 
 	public String getBairro() {
@@ -91,6 +101,30 @@ public class EnderecoEmpresa implements Serializable {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	public String getDescricao_logradouro() {
+		return descricao_logradouro;
+	}
+
+	public void setDescricao_logradouro(String descricao_logradouro) {
+		this.descricao_logradouro = descricao_logradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento_endereco() {
+		return complemento_endereco;
+	}
+
+	public void setComplemento_endereco(String complemento_endereco) {
+		this.complemento_endereco = complemento_endereco;
 	}
 
 	public Date getData_inclusao() {
@@ -108,7 +142,5 @@ public class EnderecoEmpresa implements Serializable {
 	public void setNumCep(String numCep) {
 		this.numCep = numCep;
 	}
-
 	
-
 }

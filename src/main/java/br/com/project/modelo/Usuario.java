@@ -18,8 +18,8 @@ public class Usuario implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name="id_usuario")
-	private Integer idUsuario;
+	@Column(name="idt_usuario")
+	private Integer idtUsuario;
 	
 	@Column(name="nome_usuario")
 	private String nomeUsuario;
@@ -31,11 +31,11 @@ public class Usuario implements Serializable{
 	private String emailUsuario;
 
 	public Integer getIdUsuario() {
-		return idUsuario;
+		return idtUsuario;
 	}
 
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdUsuario(Integer idtUsuario) {
+		this.idtUsuario = idtUsuario;
 	}
 
 	public String getNomeUsuario() {
@@ -62,10 +62,5 @@ public class Usuario implements Serializable{
 		this.emailUsuario = emailUsuario;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
 
 }

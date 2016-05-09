@@ -8,6 +8,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,9 +28,13 @@ public class Empresa implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id_empresa")
-	private Integer idEmpresa;
+	@Column(name = "idt_empresa")
+	private Integer idtEmpresa;
 
+	@JoinColumn(name = "idt_perfil", referencedColumnName = "idt_perfil")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private PerfilEmpresa perfilEmpresa;
+	
 	@Column(name = "nome_empresa")
 	private String nomeEmpresa;
 
@@ -38,15 +43,15 @@ public class Empresa implements Serializable {
 	private Date data_inclusao;
 
 	@JoinColumn(name = "idt_usuario", referencedColumnName = "idt_usuario")
-	@ManyToOne
-	private Usuario idUsuario;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario idtUsuario;
 
-	public Integer getIdEmpresa() {
-		return idEmpresa;
+	public Integer getIdtEmpresa() {
+		return idtEmpresa;
 	}
 
-	public void setIdEmpresa(Integer idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setIdtEmpresa(Integer idtEmpresa) {
+		this.idtEmpresa = idtEmpresa;
 	}
 
 	public String getNomeEmpresa() {
@@ -65,12 +70,12 @@ public class Empresa implements Serializable {
 		this.data_inclusao = data_inclusao;
 	}
 
-	public Usuario getIdUsuario() {
-		return idUsuario;
+	public Usuario getIdtUsuario() {
+		return idtUsuario;
 	}
 
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdtUsuario(Usuario idtUsuario) {
+		this.idtUsuario = idtUsuario;
 	}
 
 }

@@ -26,6 +26,24 @@ public class PerfilEmpresa implements Serializable {
 	@Column(name = "idt_perfil")
 	private Integer idtPerfil;
 	
+	@Column(name="descricao_perfil")
+	private String descricaoPerfil;
+
+	public Integer getIdtPerfil() {
+		return idtPerfil;
+	}
+
+	public void setIdtPerfil(Integer idtPerfil) {
+		this.idtPerfil = idtPerfil;
+	}
+
+	public String getDescricaoPerfil() {
+		return descricaoPerfil;
+	}
+
+	public void setDescricaoPerfil(String descricaoPerfil) {
+		this.descricaoPerfil = descricaoPerfil;
+	}
 	
 	
 }
