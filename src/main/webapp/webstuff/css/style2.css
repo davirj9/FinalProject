@@ -1,0 +1,504 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0
+}
+
+body,
+html {
+    height: 100%
+}
+
+body {
+    font-size: 12px;
+    line-height: 1.3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    color: #000;
+    background-color: #fff;
+    position: relative
+}
+
+input,
+textarea,
+select {
+    font-size: 12px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 200
+}
+textarea {
+    overflow: auto
+}
+
+h1{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal
+}
+
+h1 {
+    font-size: 32px;
+    color: #000;
+    font-weight: 100;
+    text-align: center
+}
+
+h1 strong {
+    font-weight: 600
+}
+
+div.container-1.clearfix.optout {
+    max-width: 790px
+}
+.conteudo .box {
+    background: none;
+    width: auto;
+    padding: 0
+}
+.conteudo .box2 {
+    display: block;
+    margin-top: 0
+}
+.conteudo .box2 p {
+    font-size: 20px;
+    color: #969696
+}
+.conteudo .box2 p a {
+    color: #969696
+}
+.conteudo .search {
+    width: auto
+}
+.conteudo .box .search input[type="submit"] {
+    width: 63px;
+    height: 63px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 50;
+    background: #73c501 url(webstuff/img/search2.png) no-repeat 0 0
+}
+.conteudo .search input[type="text"] {
+    border: 1px solid #c5c5c5;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    font-size: 19px;
+    color: #000;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 8px
+}
+.conteudo .search input[type="tel"] {
+    border: 1px solid #c5c5c5;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    font-size: 19px;
+    color: #000;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 8px
+}
+.conteudo .search {
+    top: 16px;
+    right: 80px
+}
+.conteudo .search {
+    -webkit-transform: scale(.7);
+    -moz-transform: scale(.7);
+    -o-transform: scale(.7);
+    -ms-transform: scale(.7);
+    transform: scale(.7)
+}
+
+.conteudo .box input[type="text"] { /**/ 
+    border: 1px solid #c5c5c5
+}
+.conteudo .container-1 {
+    position: relative;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px
+}
+@media only screen and (max-width: 480px) {
+    .conteudo .container-1 {
+        margin-top: 0
+    }
+}
+.conteudo .container-1:after {
+    display: block;
+    clear: both;
+    width: 100%;
+    content: ""
+}
+
+ .conteudo.box .search input[type="text"] {
+        width: 100%;
+        float: none;
+        display: block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-right: 70px;
+        border-radius: 8px;
+        margin-bottom: 13px
+    }
+    .conteudo .box .search input[type="tel"] {
+        width: 100%;
+        float: none;
+        display: block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-right: 70px;
+        border-radius: 8px;
+        margin-bottom: 13px
+    }
+    .conteudo .box .search input[type="submit"] {
+        width: 100%;
+        border-radius: 8px;
+        background: #72ac00 url(webstuff/img/search-button.png) no-repeat center center;
+        float: none;
+        display: block;
+        position: static
+    }
+    .conteudo .box .search {
+        right: 30px
+    }
+    .conteudo {
+        background-color: inherit;
+        font-size: 18px;
+        color: #f00;
+        text-align: center;
+        font-weight: 600;
+        font-style: italic;
+        padding-bottom: 10px
+    }
+
+    .conteudo .box .search input[type="text"] {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 20px
+    }
+    .conteudo .box .search input[type="tel"] {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 20px
+    }
+    .conteudo .box .search i {
+        top: 15px
+    }
+    .conteudo .box .submit,
+    .conteudo .box .search input[type="submit"] {
+        border-radius: 8px;
+        height: 59px
+    }
+    
+    .conteudo{
+        line-height: 240px
+    }
+    .conteudo .box .submit,
+    .box .submit {
+        font-size: 16px;
+        margin-bottom: 7px
+    }
+    .conteudo {
+        display: inline-block;
+        width: 100%
+    }
+    .conteudo .direitos {
+        float: none
+    }
+
+.conteudo{background-image:url(webstuff/img/img-corpo.fw.png); width:all};
+								
+.rodape, .wrapper {
+    margin: 0 auto
+}
+
+.rodape {
+    height: auto;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    background: #000
+}
+.rodape {
+    display: none
+}
+.rodape {
+    display: block
+}
+@media only screen and (max-width: 960px) {
+    .rodape {
+        display: block
+    }
+    .rodape{
+        display: none
+    }
+}
+.rodape .internal-links .list-link,
+.rodape .esquerda .list-link {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: 165px;
+    align-content: space-between
+}
+.rodape .internal-links .internal-link,
+.rodape .esquerda .internal-link {
+    display: inline-block;
+    width: 175px;
+    height: 31px;
+    background: #fff;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 1px;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 6px
+}
+.rodape .internal-links .internal-link a,
+.rodape .esquerda .internal-link a {
+    color: #fff
+}
+.rodape .internal-links .internal-link input[type='radio'],
+.rodape .esquerda .internal-link input[type='radio'] {
+    display: none
+}
+.rodape .internal-links .simple .list-link,
+.rodape .esquerda .simple .list-link {
+    display: inline
+}
+.rodape .internal-links .simple .internal-link,
+.rodape .esquerda .simple .internal-link {
+    display: inline;
+    background: transparent;
+    margin: 0;
+    text-align: center;
+    line-height: 2.5em;
+    padding: 0
+}
+.rodape .internal-links .internal-link a,
+.rodape .esquerda .internal-link a {
+    color: #fff
+}
+.rodape .internal-links .internal-link::after,
+.rodape .esquerda .internal-link::after {
+    content: '|';
+    padding: 0 5px
+}
+.rodape .internal-links .internal-link:last-child::after,
+.rodape .esquerda .internal-link:last-child::after {
+    content: ''
+}
+.rodape .internal-links {
+    margin-top: 30px
+}
+.rodape .internal-links,
+.rodape .internal-links .cuisines {
+    display: block;
+    margin: 38px 0 0
+}
+
+.rodape .esquerda {
+    padding-bottom: 32px;
+    padding-top: 28px;
+    width: 70%
+}
+.rodape .esquerda {
+    float: left;
+    margin: 35px;
+    padding-right: 27px
+}
+@media only screen and (max-width: 768px) {
+    .rodape .esquerda {
+        margin: 0
+    }
+}
+.rodape .esquerda .list-link {
+    list-style: none outside none;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 33%;
+    height: auto
+}
+.rodape .esquerda .list-link {
+    background: transparent;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    height: auto;
+    padding: 0
+}
+.rodape p {
+    clear: both;
+    color: #fff;
+    font-size: 10px
+}
+.rodape .direitos {
+    padding-bottom: 20px;
+    width: 30%
+}
+.rodape .direitos p {
+    text-align: right
+}
+.rodape .direitos {
+    padding: 35px 0 5px 0;
+    top: 0 !important
+}
+.rodape .direitos {
+    clear: both;
+    float: right;
+    margin-bottom: 10px;
+    margin-top: 5px
+}
+.rodape .direitos {
+    display: inline-block;
+    height: 55px;
+    width: auto;
+    margin-right: 20px
+}
+.rodape .direitos {
+    background-size: contain;
+    display: inline-block;
+    height: 27px;
+    width: 67px;
+    margin: 14px auto
+}
+.rodape .direitos img {
+    height: auto;
+    margin: 9px 0;
+    width: 172px
+}
+
+.rodape {
+    position: relative
+}
+.rodape p {
+    bottom: 30px;
+    right: 50px;
+    text-align: right
+}
+.rodape p {
+    position: static
+}
+
+.rodape {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: auto;
+        height: 210px !important
+    }
+    .rodape {
+        height: 160px
+    }
+    .rodape .esquerda {
+        width: 30% !important
+    }
+    .rodape .direitos {
+        width: auto
+    }
+    .rodape .direitos {
+        text-align: center;
+        padding-right: 0
+    }
+
+.rodape p {
+        bottom: 40px;
+        right: 25px;
+        text-align: right
+    }
+    .rodape p {
+        position: static
+    }
+    
+.rodape {
+        height: 260px !important
+    }
+    .rodape .esquerda {
+        width: 100%;
+        float: none
+    }
+    .rodape .esquerda {
+        float: none;
+        text-align: center;
+        padding-top: 10px
+    }
+    .rodape .esquerda {
+        margin: 0 auto !important;
+        display: block
+    }
+    .rodape .direitos {
+        width: 100%;
+        padding-right: 0 !important
+    }
+    .rodape .direitos {
+        width: 221px;
+        margin-left: auto;
+        margin-right: auto;
+        float: none
+    }
+    .rodape .direitos {
+        margin-right: 5px
+    }
+    .rodape .direitos {
+        width: 50px;
+        height: 21px
+    }
+    .rodape .direitos img {
+        width: 162px;
+        margin: 7px 0
+    }
+    .rodape .direitos {
+        text-align: center;
+        float: none !important;
+        padding-right: 0
+    }
+    .rodape .direitos li {
+        float: none;
+        display: inline-block;
+        text-align: center
+    }
+    .rodape p {
+        text-align: center !important
+    }
+    .rodape .esquerda {
+        padding-right: 0
+    }
+    
+    .rodape p {
+        position: static;
+        bottom: 40px;
+        right: 25px;
+        text-align: center
+    }
+
+    .rodape {
+        padding-right: 0;
+        position: static;
+        top: -15px
+    }
+	
+	.container-1 {
+    max-width: 923px;
+    margin: 0 auto
+	}
+	
+	.conteudo .container-1 {
+    position: relative;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px}   
+
+.form-pesquisa h1{font-size: 26px;}
