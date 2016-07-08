@@ -12,7 +12,7 @@
 
 
 	<div id="apresentacao">
-        <form method="post" action="index.html">
+        <form id="FormBuscaMap" method="post" action="index.html">
         <fieldset>
 		<div class="campos">
             <label for="txtEndereco">Endereço:</label>

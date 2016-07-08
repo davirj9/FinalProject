@@ -63,7 +63,7 @@
 				
 				<!--TESTE DO CRUD PARA BUSCAR USUARIOS-->
 				<form class="navbar-form pull-right" id="buscarUsuarios"
-					action="<%=request.getContextPath()%>/buscarUsuarios" method="POST">
+					action="<%=request.getContextPath()%>/teste" method="POST">
 
 					<button type="submit" class="btn btn-primary">
 						<font><font>Pesquisar</font></font>

@@ -1,6 +1,6 @@
 <%@page import="javax.xml.ws.Response"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="javax.swing.text.html.FormSubmitEvent"%>
 <%@page import="java.awt.event.InputEvent"%>
@@ -50,7 +50,7 @@
 							<!--
                                 -->
 							<li class="divider-vertical"></li>
-							<li><a href="#">Sobre N�s</a></li>
+							<li><a href="#">Sobre Nós</a></li>
 							<!--
                                 -->
 							<li class="divider-vertical"></li>
@@ -59,27 +59,27 @@
                                 -->
 							<li class="divider-vertical"></li>
 
-							<!--In�cio o DropDown-->
+							<!--Início o DropDown-->
 
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown"><font><font>Suspensa </font></font><b
 									class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#"><font><font>Ação</font></font></a></li>
-									<li><a href="#"><font><font>Outra ação</font></font></a>
+									<li><a href="#"><font><font>AÃ§Ã£o</font></font></a></li>
+									<li><a href="#"><font><font>Outra aÃ§Ã£o</font></font></a>
 									</li>
 									<li><a href="#"><font><font>Outra coisa
 													aqui</font></font></a></li>
 									<li class="divider"></li>
-									<li class="nav-header"><font><font>Cabeçalho
+									<li class="nav-header"><font><font>CabeÃ§alho
 												Nav</font></font></li>
-									<li><a href="#"><font><font>Ligação
+									<li><a href="#"><font><font>LigaÃ§Ã£o
 													Separado</font></font></a></li>
 									<li><a href="#"><font><font>Mais um elo
 													separado</font></font></a></li>
 								</ul></li>
 
-							<!--In�cio o Formulario-->
+							<!--Início o Formulario-->
 							<form class="navbar-form pull-right">
 								<Input type="text" placeholder="Informe seu cep">
 								<button type="submit" class="btn">
@@ -91,13 +91,13 @@
 							<!--Termina o DropDown-->
 						</ul>
 
-						<!--In�cio cadastro-->
+						<!--Início cadastro-->
 						<a href="#" class="btn btn-mini btn-primary" id="openBtn"
 							style="position: relative; top: 5px; left: 2em; display: none;">Cadastrar</a>
-						<!--In�cio Login-->
+						<!--Início Login-->
 						<!-- Button to trigger modal -->
 						<%
-							// clicar no link � direcionado
+							// clicar no link é direcionado
 							// para pagina endSession.jsp
 						%>
 						<a href="endSession.jsp" class=" btn btn-mini btn-danger"
@@ -126,13 +126,13 @@
 					// e empresso o valor da secao
 				%>
 				<Input class="btn btn-info disabled" type="button" placeholder=""
-					value="<%--out.println("sess�o aberta como o usuario: "+sec);--%>"
+					value="<%--out.println("sessão aberta como o usuario: "+sec);--%>"
 					style="position: relative; margin: auto; left: -4em; top: -4em;">
 
 			</div>
 
 			<h1>SEJA BEM VINDO</h1>
-			<p>INFORMA��ES</p>
+			<p>INFORMAÇÕES</p>
 			<p>
 
 				<button type="button" id="BtM" name="BTN_ap"

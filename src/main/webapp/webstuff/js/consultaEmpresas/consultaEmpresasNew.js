@@ -91,7 +91,7 @@ $(document).ready(function () {
 		}
 	});
 	
-	$("form").submit(function(event) {
+	$("FormBuscaMap").submit(function(event) {
 		event.preventDefault();
 			
 		var endereco = $("#txtEndereco").val();

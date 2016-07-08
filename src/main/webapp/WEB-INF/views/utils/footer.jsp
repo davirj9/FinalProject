@@ -1,4 +1,5 @@
-<footer class="rodape">
+<footer class="rodape"
+style="background-color: #ff7d7d;">Cadastrar	>
 		<ul class="nav nav-list pull-left">
 			<li class="nav-header"><font><font>Links do Site</font></font></li>
 			<li><a href="#"><font><font>TCC</font></font></a></li>

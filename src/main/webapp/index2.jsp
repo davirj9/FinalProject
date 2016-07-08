@@ -28,13 +28,17 @@
 
 </head>
 <body>
-
+	<div class="menu" style="background-color: #ff7d7d">
+	<%@ include file="WEB-INF/views/utils/_menu.jsp"%>
+	</div>
+	
+	
 	<div class="conteudo">
 		<!--conteudo-->
 
 		<div class="container-1">
 			<h1>O QUE VOCÊ ESTÁ PROCURANDO?</h1>
-			<div class="box box1" id="box1-address">
+			<div class="box" id="box1-address">
 				
 			<%@ include file="WEB-INF/views/consultaEmpresas/_consultaEmpresaNew.jsp"%>
 				
@@ -45,22 +49,8 @@
 		<!-- container-1 -->
 	</div>
 	<!--fecha conteudo-->
-
-
-	<div class="rodape">
-		<div class="container-1">
-
-			<div class="esquerda"></div>
-
-			<div class="direitos">
-				<p>&copy;Copyright 2016 -Todos os direitos reservados</p>
-			</div>
-
-		</div>
-		<!--fecha container1 -->
-
-	</div>
-	<!-- fecha linha rodape -->
+	
+<%@ include file="WEB-INF/views/utils/footer.jsp"%>
 
 </body>
 </html>

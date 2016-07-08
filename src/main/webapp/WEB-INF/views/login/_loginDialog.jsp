@@ -5,16 +5,16 @@
 <script src="webstuff/js/jquery.js"></script>
 <script src="webstuff/js/bootstrap.js"></script>
 
-
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+<button type="button" class="btn btn-mini btn-danger" data-toggle="modal" 
 	data-target="#myModalLogin"
-	style="position: relative; top: 5px; left: 3em;">Login</button>
+	style="position: relative; top: 5px; right: -57em;">Login
+<i class="icon-off"></i>
+</button>
 
-
-<!-- Modal Login-->
-<div id="myModalLogin" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<!-- Modal Login-->
+	<div id="myModalLogin" class="modal fade" role="dialog">
+		<div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -23,33 +23,24 @@
 				<h4 class="modal-title">Login</h4>
 			</div>
 			<div class="modal-body">
-
 				<!--Formulario de login-->
-				<form class="form-horizontal" id="efetuarLoginUsuario"
-					action="<%=request.getContextPath()%>/efetuarLoginUsuario"
-					method="POST">
-
-					<div class="control-group">
-						<label class="control-label" for="inputEmail">Login</label>
-						<div class="controls">
-							<input name="login" type="text" id="inputLogin"
-								placeholder="Login">
-						</div>
+				<form id="formLoginUser" method="post" action="<%=request.getContextPath()%>/efetuarLoginUsuario">
+					<div class="input-group">
+						<span class="input-group-addon"> <img alt="Usuário" src="<%=request.getContextPath()%>/webstuff/img/icones/usuario_20x20.png"> </span> <input type="text"
+							class="form-control" placeholder="Usuário" name="emailUsuario" value="${loginUsuario}">
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="inputPassword">Senha</label>
-						<div class="controls">
-							<input name="senha" type="password" id="inputPassword"
-								placeholder="Password">
-						</div>
+					<div class="espacoTop"></div>
+					<div class="input-group">
+						<span class="input-group-addon"><img alt="Usuário" src="<%=request.getContextPath()%>/webstuff/img/icones/cadeado_20x20.png"></span> <input type="password"
+							class="form-control" placeholder="Senha" name="senhaUsuario" maxlength="8">
 					</div>
-					<div class="control-group">
-						<div class="controls">
-
-							<button type="submit" class="btn btn-success">Entrar</button>
-						</div>
-					</div>
-				</form>
+					<div class="espacoTop"></div>
+					
+					<h6>${msgErro}</h6>
+					
+					<input name="submit" value="Efetuar Login" type="submit" class="btn btn-primary submitButton"/>
+					<a href="#" class="linkSenha">Esqueci minha senha</a>
+			   </form>
 				<!--Formulario de login-->
 
 			</div>

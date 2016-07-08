@@ -1,10 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>FinalProject</groupId>
 	<artifactId>br.com.finalproject</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.springframework.version>4.2.4.RELEASE</org.springframework.version>
+	</properties>
 
 	<dependencies>
 		<!-- DEPENDÊNCIAS DO SPRING -->
@@ -61,35 +67,38 @@
 			<version>5.1.38</version>
 		</dependency>
 		<!-- SPRING SECURITY -->
-		<dependency>
-	<groupId>org.springframework.security</groupId>
-	<artifactId>spring-security-core</artifactId>
-	<version>4.0.3.RELEASE</version>
-	<scope>provided</scope>
-</dependency>
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-config</artifactId>
-		<version>4.0.3.RELEASE</version>
-		<scope>provided</scope>
+	 <dependency>
+	         <groupId>commons-logging</groupId>
+	         <artifactId>commons-logging</artifactId>
+	         <version>1.2</version>
+	 </dependency>	
+	 <dependency>
+	           <groupId>org.springframework.security</groupId>
+	           <artifactId>spring-security-config</artifactId>
+	           <version>3.1.0.RELEASE</version>
+	  </dependency>
+	  <dependency>
+	           <groupId>org.springframework.security</groupId>
+	           <artifactId>spring-security-core</artifactId>
+	           <version>3.1.0.RELEASE</version>
+	  </dependency>
+	  <dependency>
+	           <groupId>org.springframework.security</groupId>
+	           <artifactId>spring-security-web</artifactId>
+	           <version>3.1.0.RELEASE</version>
+	  </dependency>
+	  <dependency>
+	        	<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-taglibs</artifactId>
+				<version>4.0.3.RELEASE</version>
+				<scope>provided</scope>
+	 </dependency> 
+	 <!-- SPRING SECURITY -->
+	 <dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>bootstrap</artifactId>
+				<version>3.3.6</version>
 	</dependency>
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-web</artifactId>
-		<version>4.0.3.RELEASE</version>
-		<scope>provided</scope>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-taglibs</artifactId>
-		<version>4.0.3.RELEASE</version>
-		<scope>provided</scope>
-	</dependency> 
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>3.3.6</version>
-		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>jquery</artifactId>
