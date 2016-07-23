@@ -21,6 +21,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 import br.com.project.dao.UsuarioDAO;
 import br.com.project.modelo.Usuario;
+import br.com.project.util.Util;
 
 @Repository
 public class UsuarioDAOImpl implements UsuarioDAO{
@@ -33,7 +34,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 	}
 	
 	@Override	
-	public boolean autenticaUsuario(Usuario usuario) {
+	public Boolean autenticaUsuario(Usuario usuario) {
 		boolean autenticado = false;
 		
         try {
@@ -41,18 +42,18 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         	jpql.append("SELECT COUNT(u.idtUsuario) FROM Usuario AS u ");
         	jpql.append("WHERE u.emailUsuario = ?1 AND u.senhaUsuario = ?2");
 			
-        	Query query = entityManager.createQuery(jpql.toString(),Long.class);
+        	Query query = entityManager.createQuery(jpql.toString());
 			
 			query.setParameter(1, usuario.getEmailUsuario());
 			query.setParameter(2, usuario.getSenhaUsuario());
 			
-		    List<Usuario> count = query.getResultList();
-			
-			if(count.size() == 0)
-				return false;
-			else
-				return true;
+			Long total = (Long) query.getSingleResult();
             
+			if(total > 0)
+				return true;
+			else
+				return false;
+			
         } catch (Exception ex) {
             JOptionPane.showInputDialog(this, ex);
         }
@@ -84,11 +85,11 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 	@Override
 	public Collection<Usuario> buscarUsuarios() {
 		
-		StringBuilder sql = new StringBuilder();
+		StringBuilder jpql = new StringBuilder();
 		
-		sql.append("select a from Usuario a");
+		jpql.append("select a from Usuario a");
 				
-		Query query = entityManager.createQuery(sql.toString());
+		Query query = entityManager.createQuery(jpql.toString());
 		
 		return (Collection<Usuario>) query.getResultList();
 	}

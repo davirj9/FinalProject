@@ -91,48 +91,26 @@ $(document).ready(function () {
 		}
 	});
 	
-	$("FormBuscaMap").submit(function(event) {
+	$("form").submit(function(event) {
 		event.preventDefault();
 			
 		var endereco = $("#txtEndereco").val();
 		var latitude = $("#txtLatitude").val();
 		var longitude = $("#txtLongitude").val();
 		
-		$.getJSON("//maps.google.com/maps/api/geocode/json?address="+ latitude +","+ longitude + "&sensor=false.",function(data){
-			for (var j=0; j<data.results.length; j++)
-			{
-				if (results[j].types[0]=='locality')
-				{
-					alert('foooooi !');
-                    indice=j;
-                    break;
-                }
-				alert('The good number is: '+j);
-				//alert(data.results[j]);
+		$.ajax({
+			url : "consultarEmpresas",
+			type : "POST",
+			cache : false,
+			data : {
+				latitude : latitude,
+				longitude : longitude
+			},
+			success : function(data) {
 				
-				for (var i=0; i< data.results[j].address_components.length; i++)
-	            {
-	                if (data.results[j].address_components[i].types[0] == "administrative_area_level_2") {
-	                        //this is the object you are looking for
-	                        city = data.results[j].address_components[i];
-	                    }
-	                if (data.results[j].address_components[i].types[0] == "administrative_area_level_1") {
-	                        //this is the object you are looking for
-	                        region = data.results[j].address_components[i];
-	                    }
-	                if (data.results[j].address_components[i].types[0] == "country") {
-	                        //this is the object you are looking for
-	                        country = data.results[j].address_components[i];
-	                    }
-	            }
-
-	            //city data
-	            alert(city.long_name + " || " + region.long_name + " || " + country.short_name)
 			}
-			
-		});
+		})	
 		
-		alert("Endereço: " + endereco + "\nLatitude: " + latitude + "\nLongitude: " + longitude);
 	});
 
 });

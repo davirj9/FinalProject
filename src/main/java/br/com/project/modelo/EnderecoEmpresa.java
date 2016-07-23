@@ -32,18 +32,6 @@ public class EnderecoEmpresa implements Serializable {
 	@Column(name = "idt_endereco")
 	private Integer idtEndereco;
 
-	@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
-	@OneToOne
-	private Empresa idtEmpresa;
-	
-	@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
-	@ManyToOne
-	private Cidade idt_estado;
-	
-	@JoinColumn(name = "idt_cidade", referencedColumnName = "idt_cidade")
-	@ManyToOne
-	private Cidade idt_cidade;
-
 	@Column(name = "bairro")
 	private String bairro;
 	
@@ -63,36 +51,24 @@ public class EnderecoEmpresa implements Serializable {
 	@Column(name = "NUM_CEP")  
     private String numCep;
 
+	@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
+	@OneToOne
+	private Empresa idtEmpresa;
+	
+	@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
+	@ManyToOne
+	private Estado idtEstado;
+	
+	@JoinColumn(name = "idt_cidade", referencedColumnName = "idt_cidade")
+	@ManyToOne
+	private Cidade idtCidade;
+	
 	public Integer getIdtEndereco() {
 		return idtEndereco;
 	}
 
 	public void setIdtEndereco(Integer idtEndereco) {
 		this.idtEndereco = idtEndereco;
-	}
-
-	public Empresa getIdtEmpresa() {
-		return idtEmpresa;
-	}
-
-	public void setIdtEmpresa(Empresa idtEmpresa) {
-		this.idtEmpresa = idtEmpresa;
-	}
-
-	public Cidade getIdt_estado() {
-		return idt_estado;
-	}
-
-	public void setIdt_estado(Cidade idt_estado) {
-		this.idt_estado = idt_estado;
-	}
-
-	public Cidade getIdt_cidade() {
-		return idt_cidade;
-	}
-
-	public void setIdt_cidade(Cidade idt_cidade) {
-		this.idt_cidade = idt_cidade;
 	}
 
 	public String getBairro() {
@@ -141,6 +117,30 @@ public class EnderecoEmpresa implements Serializable {
 
 	public void setNumCep(String numCep) {
 		this.numCep = numCep;
+	}
+
+	/*public Empresa getIdtEmpresa() {
+		return idtEmpresa;
+	}
+
+	public void setIdtEmpresa(Empresa idtEmpresa) {
+		this.idtEmpresa = idtEmpresa;
+	}
+*/
+	public Estado getIdtEstado() {
+		return idtEstado;
+	}
+
+	public void setIdtEstado(Estado idtEstado) {
+		this.idtEstado = idtEstado;
+	}
+
+	public Cidade getIdtCidade() {
+		return idtCidade;
+	}
+
+	public void setIdtCidade(Cidade idtCidade) {
+		this.idtCidade = idtCidade;
 	}
 	
 }

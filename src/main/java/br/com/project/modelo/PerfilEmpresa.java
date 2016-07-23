@@ -4,11 +4,14 @@
 package br.com.project.modelo;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +32,9 @@ public class PerfilEmpresa implements Serializable {
 	@Column(name="descricao_perfil")
 	private String descricaoPerfil;
 
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "perfilEmpresa")
+    private Set<Empresa> Empresa;
+	
 	public Integer getIdtPerfil() {
 		return idtPerfil;
 	}

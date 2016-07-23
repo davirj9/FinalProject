@@ -9,5 +9,5 @@ public interface UsuarioDAO {
 	public abstract Usuario salvar(Usuario usuario);
 	public abstract Usuario buscaIdtUsuario(Long idUsuario);
 	public abstract Collection<Usuario> buscarUsuarios();
-	public abstract boolean autenticaUsuario(Usuario usuario);
+	public abstract Boolean autenticaUsuario(Usuario usuario) throws Exception;
 }

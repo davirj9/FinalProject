@@ -13,9 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * @author Maçana
@@ -30,10 +32,6 @@ public class Empresa implements Serializable {
 	@GeneratedValue
 	@Column(name = "idt_empresa")
 	private Integer idtEmpresa;
-
-	@JoinColumn(name = "idt_perfil", referencedColumnName = "idt_perfil")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private PerfilEmpresa perfilEmpresa;
 	
 	@Column(name = "nome_empresa")
 	private String nomeEmpresa;
@@ -41,19 +39,45 @@ public class Empresa implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_inclusao")
 	private Date data_inclusao;
+	
+	@JoinColumn(name = "idt_perfil", referencedColumnName = "idt_perfil")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private PerfilEmpresa perfilEmpresa;
 
 	@JoinColumn(name = "idt_usuario", referencedColumnName = "idt_usuario")
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Usuario idtUsuario;
+	private Usuario usuario;
+	
+	@Transient
+	private PerfilEmpresa descricaoPerfil;
+	
+	/*@OneToOne
+	private EnderecoEmpresa enderecoEmpresa;*/
 
+	public PerfilEmpresa getDescricaoPerfil() {
+		return descricaoPerfil;
+	}
+
+	public void setDescricaoPerfil(PerfilEmpresa descricaoPerfil) {
+		this.descricaoPerfil = descricaoPerfil;
+	}
+	
 	public Integer getIdtEmpresa() {
 		return idtEmpresa;
 	}
-
+	
 	public void setIdtEmpresa(Integer idtEmpresa) {
 		this.idtEmpresa = idtEmpresa;
 	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
 	}
@@ -71,11 +95,27 @@ public class Empresa implements Serializable {
 	}
 
 	public Usuario getIdtUsuario() {
-		return idtUsuario;
+		return usuario;
 	}
 
-	public void setIdtUsuario(Usuario idtUsuario) {
-		this.idtUsuario = idtUsuario;
+	public void setIdtUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+
+	public PerfilEmpresa getPerfilEmpresa() {
+		return perfilEmpresa;
+	}
+
+	public void setPerfilEmpresa(PerfilEmpresa perfilEmpresa) {
+		this.perfilEmpresa = perfilEmpresa;
+	}
+
+	/*public EnderecoEmpresa getEnderecoEmpresa() {
+		return enderecoEmpresa;
+	}
+
+	public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
+		this.enderecoEmpresa = enderecoEmpresa;
+	}*/
 
 }

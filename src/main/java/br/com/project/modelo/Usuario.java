@@ -1,11 +1,14 @@
 package br.com.project.modelo;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  * @author Maçana
@@ -30,6 +33,9 @@ public class Usuario implements Serializable{
 	@Column(name="email_usuario")
 	private String emailUsuario;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+	private Set<Empresa> empresa;
+	
 	public Integer getIdUsuario() {
 		return idtUsuario;
 	}
