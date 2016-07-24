@@ -58,6 +58,22 @@
 			event.preventDefault();
 
 		});
+		
+		$("visualizarEmpresa").live({
+			click : function(){
+				$.ajax({
+					url : "retornoEmpresa",
+					type : "POST",
+					cache : false,
+					data : {
+						idtEmpresa : idtEmpresa
+					},
+					success : function (data){
+						
+					}
+				})
+			}
+		})
 		 
 	});
 </script>
@@ -88,6 +104,7 @@
 								<th style="display: none;">Id</th>
 								<th style="width: 2%">Id</th>
 								<th style="width: 8%">Nome Empresa</th>
+								<th style="width: 13%">Endereço</th>
 								<th style="width: 18%">Data de inclusão</th>
 								<th style="width: 10%">Perfil da empresa</th>
 							</tr>
@@ -97,16 +114,41 @@
 								<tr>
 									<td>${e.idtEmpresa}</td>
 									<td>${e.nomeEmpresa}</td>
+									<td>Estado: ${e.enderecoEmpresa.idtEstado.nomeEstado}
+										Bairro: ${e.enderecoEmpresa.bairro}
+										Logradouro: ${e.enderecoEmpresa.descricao_logradouro}
+										${e.enderecoEmpresa.numero}</td>
 									<td><fmt:formatDate value="${e.data_inclusao}" pattern="dd/MM/yyyy HH:mm:ss" /></td>
 									<td>${e.perfilEmpresa.descricaoPerfil}</td>
+									<td><input title="Visualizar empresa" name="${e.idtEmpresa}" type="image" data-toggle="modal" data-target="#myModalVisualizar" src="webstuff/img/icones/eye.png"></input>
+									</td>
 							    </tr>
 							</c:forEach>
 						</tbody>
 				</table>				
 			</div>
 		</div>
-		
-			
+
+	<!-- Modal Login-->
+	<div id="myModalVisualizar" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Teste</h4>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+	
 		<%@ include file="WEB-INF/views/utils/footer.jsp"%>
 	</div>
 </body>

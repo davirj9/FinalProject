@@ -19,3 +19,13 @@ position: relative;
 
 height: 92px;
 }
+.carregarLupa{
+	height: 22px;
+	width: 22px;
+	background-image: url("../img/icones/Magnifying-Glass-icon.png");
+	background-repeat: no-repeat;
+	float: left;
+	display: block;
+    outline: none;
+    padding: 10px 11px 13px 11px;
+}

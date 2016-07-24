@@ -51,9 +51,9 @@ public class EnderecoEmpresa implements Serializable {
 	@Column(name = "NUM_CEP")  
     private String numCep;
 
-	@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
+	/*@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
 	@OneToOne
-	private Empresa idtEmpresa;
+	private Empresa idtEmpresa;*/
 	
 	@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
 	@ManyToOne

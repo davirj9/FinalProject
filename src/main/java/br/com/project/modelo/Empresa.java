@@ -51,8 +51,9 @@ public class Empresa implements Serializable {
 	@Transient
 	private PerfilEmpresa descricaoPerfil;
 	
-	/*@OneToOne
-	private EnderecoEmpresa enderecoEmpresa;*/
+	@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
+	@OneToOne
+	private EnderecoEmpresa enderecoEmpresa;
 
 	public PerfilEmpresa getDescricaoPerfil() {
 		return descricaoPerfil;
@@ -110,12 +111,12 @@ public class Empresa implements Serializable {
 		this.perfilEmpresa = perfilEmpresa;
 	}
 
-	/*public EnderecoEmpresa getEnderecoEmpresa() {
+	public EnderecoEmpresa getEnderecoEmpresa() {
 		return enderecoEmpresa;
 	}
 
 	public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
 		this.enderecoEmpresa = enderecoEmpresa;
-	}*/
+	}
 
 }
