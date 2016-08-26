@@ -6,78 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="description" content="Find Here" />
-<title>Find Here</title>
-<meta name="description" content="Busque serviços de forma fácil">
-<meta name="viewport" content="width=device-width, initial-scale=1"> <!--Para garantir a renderização adequada e sensíbilidade ao toque BOOTSTRAP-->
-<meta property="og:image" content="logo-snippet.png" />
-<meta property="og:image:secure_url" content="logo-snippet.png" />
-<link rel="icon" type="shortcut icon" href="favicon.ico" />
-
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap-select.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/jquery-ui.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap-submenu.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/datepicker.css"
-	type="text/css" />		
-<link rel="stylesheet" href="webstuff/css/style2.css">
-
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/webstuff/js/home/home.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<style>
-@media only screen and (min-width: 601px) {
-	body.home.wrapper {
-		background-image: url(webstuff/img/img-corpo.fw.png);
-	}
-}
-</style>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-			
-		$("a").click(function(event) {
-			var link = $(this);
-
-			if (link.attr("id").match("esconder"))
-				$("#MeuDiv").hide("slow");
-			else
-				$("#MeuDiv").show("slow");
-
-			event.preventDefault();
-
-		});
-		
-		$("visualizarEmpresa").live({
-			click : function(){
-				$.ajax({
-					url : "retornoEmpresa",
-					type : "POST",
-					cache : false,
-					data : {
-						idtEmpresa : idtEmpresa
-					},
-					success : function (data){
-						
-					}
-				})
-			}
-		})
-		 
-	});
-</script>
-
+<title>Find Here</title>	
+<%@ include file="WEB-INF/views/compartilhado/_base_css_js.jsp"%>
 </head>
 <body>
 	
@@ -120,7 +50,7 @@
 										${e.enderecoEmpresa.numero}</td>
 									<td><fmt:formatDate value="${e.data_inclusao}" pattern="dd/MM/yyyy HH:mm:ss" /></td>
 									<td>${e.perfilEmpresa.descricaoPerfil}</td>
-									<td><input title="Visualizar empresa" name="${e.idtEmpresa}" type="image" data-toggle="modal" data-target="#myModalVisualizar" src="webstuff/img/icones/eye.png"></input>
+									<td><input class="visualizarEmpresa" title="Visualizar empresa" name="${e.idtEmpresa}" type="image" src="webstuff/img/icones/eye.png"></input>
 									</td>
 							    </tr>
 							</c:forEach>
@@ -129,7 +59,7 @@
 			</div>
 		</div>
 
-	<!-- Modal Login-->
+	<!-- Modal Visualizar Empresa-->
 	<div id="myModalVisualizar" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
@@ -151,5 +81,7 @@
 	
 		<%@ include file="WEB-INF/views/utils/footer.jsp"%>
 	</div>
+	
+	<script type="text/javascript" src="webstuff/js/home/home.js"></script>
 </body>
 </html>

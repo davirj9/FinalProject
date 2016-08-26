@@ -12,7 +12,7 @@
 
 
 	<div id="apresentacao">
-        <form>
+        <form id="consultarEmpresas">
         <fieldset>
 			<div class="campos">
             	<label for="txtEndereco">Endereço:</label>

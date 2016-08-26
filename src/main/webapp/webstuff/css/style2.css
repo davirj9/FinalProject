@@ -22,7 +22,7 @@ height: 92px;
 .carregarLupa{
 	height: 22px;
 	width: 22px;
-	background-image: url("../img/icones/Magnifying-Glass-icon.png");
+	background-image: url("../img/icones/eye.png");
 	background-repeat: no-repeat;
 	float: left;
 	display: block;
