@@ -1,0 +1,72 @@
+.dropdown-submenu{
+    position:relative;
+    clear: both;
+    width: 100%;
+}
+
+.dropdown-submenu > .dropdown-menu
+{
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:-1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu{
+    display:block;
+}
+
+.dropdown-submenu > a:after{
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+
+.dropdown-submenu:hover > a:after{
+    border-left-color:#ffffff;
+}
+
+.dropdown-submenu .pull-left{
+    float:none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu{
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+.dropdown-submenu.pull-left,
+.dropdown-submenu.pull-right {
+  float: none;
+}
+
+/* This will target all children, but what about children of .dropdown-submenu.pull-right? */
+.pull-right .dropdown-submenu > .dropdown-menu,
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: -1px;
+}
+
+/* Will need a pull-right override - should this be a normal selector to target all future .dropdown-menu? */
+.dropdown-submenu.pull-right > .dropdown-menu {
+  left: 100%;
+  right: auto;
+  margin-left: -1px;
+  margin-right: 0;
+}
