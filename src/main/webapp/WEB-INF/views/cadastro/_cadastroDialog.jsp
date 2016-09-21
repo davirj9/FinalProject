@@ -4,7 +4,7 @@
 <script src="webstuff/js/jquery-1.10.1.min.js"></script>
 <script src="webstuff/js/jquery.js"></script>
 <script src="webstuff/js/bootstrap.js"></script>
-
+	
 <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-mini btn-primary" data-toggle="modal" 
 	data-target="#myModalCadastro"
@@ -24,9 +24,7 @@
 				</div>
 				<div class="modal-body">
 					<!--Formulario de CADASTRO-->
-					<form class="form-horizontal" id="efetuarCadastroUsuario"
-						action="<%=request.getContextPath()%>/efetuarCadastroUsuario"
-						method="POST">
+					<form class="form-horizontal" id="efetuarCadastroUsuario">
 						<div class="control-group">
 							<label class="control-label" for="inputNome">Nome</label>
 							<div class="controls">
@@ -49,8 +47,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
-
-								<button type="submit" class="btn btn-success">Cadastrar</button>
+								<button id="btnCadastrar" type="submit" class="btn btn-success">Cadastrar</button>
 							</div>
 						</div>
 					</form>
@@ -63,3 +60,31 @@
 
 		</div>
 	</div>
+	
+	<script>
+	$("input").blur(function(){
+	     if($(this).val() == ""){
+	    	 $(this).css({"border-color" : "#F00", "padding": "2px"});
+	     }else 
+	    	 $(this).css({"border-color" : "#FFFFFF", "padding": "2px"});
+	 })
+
+	$("#efetuarCadastroUsuario").submit(function(event) {
+
+		var nome = $("#inputNome").val();
+		var email = $("#inputEmail").val();
+		var senha = $("#inputPassword").val();
+		
+		var mensagem = '';
+		var validacaoOk = true;
+		
+		if(nome == '' || email == '' || senha == '')
+			jAlert('Favor, preencha o formulário completo.', 'Alert Dialog');
+		else 
+			return;
+		
+		breack;
+	});	
+
+	
+	</script>

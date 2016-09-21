@@ -1,99 +1,32 @@
-<html lang="pt">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
- 
-    <title>Nome da p·gina</title>
- 
-  
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap-select.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/jquery-ui.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap-submenu.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/datepicker.css"
-	type="text/css" />		
-<link rel="stylesheet" href="webstuff/css/style.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Find Here Teste Modal.</title>	
+<%@ include file="WEB-INF/views/compartilhado/_base_css_js.jsp"%>
+</head>
+<body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- 
- 
-    <script type="text/javascript">
- 
-      $(document).ready( function() {
-        $('#ocultarDiv').click(function () {
-          $('.divTeste').addClass('hide');
-        });
-        $('#mostrarDiv').click(function () {
-          $('.divTeste').removeClass('hide');
-        });
-      });
-    </script>
-  </head>
- 
-  <body>
-  
-    <div class="container">
- 
-      <div class="starter-template">
-          <h1>Pagina 1</h1>
-          <p class="lead">Essa È a p·gina 1</p>
-		  <button class="btn btn-default" type="submit" id="ocultarDiv">Ocultar</button>
-          <button class="btn btn-default" type="submit" id="mostrarDiv">Mostrar</button>	 		
-          <div class="divTeste">
-	          <div class="panel panel-default">
-					<div class="panel-body">
-						<div class="mostraEscondeConteudo">
-							TUDO VAI DAR CERTO
-						</div>
-					</div>
-			  </div>
-          </div>
-      </div>
- 
-    </div><!-- /.container -->
+<a href="#" class="btn" id="openBtn"> Abrir Modal</a>
+<button class="btn" id="openBtn2"> teste</button> 
 
+<table id="tableAjaxEmpresa" class="table table-hover">
+		<thead>
+			<tr>
+				<th>Nome Empresa</th>
+				<th>Data de inclus√£o</th>
+				<th>Perfil</th>
+			</tr>
+		</thead>
+		<tbody id="bodyTemplateAjaxDadosEmpresa">
+		
+		</tbody>
+</table>
 
-<!-- Trigger the modal with a button -->
-<input type="image" data-toggle="modal" 
-	data-target="#myModalVisualizar"
-	src="webstuff/img/icones/eye.png"
-	style="position: relative; top: 5px; right: -57em;">
-</input>
-<input type="image" value="Enviar" id="btnVisualizarEmpresa" src="webstuff/img/icones/eye.png"></input>
-
-	<!-- Modal Login-->
-	<div id="myModalVisualizar" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Teste</h4>
-			</div>
-			<div class="modal-body">
-				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-
-	</div>
-</div>
- 
-  </body>
+<script type="text/javascript" src="webstuff/js/teste/teste2.js"></script>
+</body>
 </html>

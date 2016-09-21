@@ -94,6 +94,18 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		return (Collection<Usuario>) query.getResultList();
 	}
 	
+	public Collection<Object> lista(){
+		
+		StringBuilder jpql = new StringBuilder();
+		
+		jpql.append("select a from Usuario a");
+				
+		Query query = entityManager.createQuery(jpql.toString());
+		
+		System.out.println((Collection<Object>) query.getResultList());
+		return (Collection<Object>) query.getResultList();
+	}
+	
 	
 	
 }	

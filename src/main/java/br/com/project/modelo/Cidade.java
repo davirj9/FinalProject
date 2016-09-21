@@ -17,14 +17,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  * @author Maçana
  *
  */
 @Entity
 @Table(name="cidade")
-public class Cidade implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Cidade {/*implements Serializable {
+	private static final long serialVersionUID = 1L;*/
 	
 	@Id
 	@GeneratedValue
@@ -32,7 +34,8 @@ public class Cidade implements Serializable {
 	private Integer idtCidade;
 	
 	@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Estado estado;
 	
 	@Column(name = "sigla_cidade")

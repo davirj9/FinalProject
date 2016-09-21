@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
+import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.dao.EstadoDAO;
 import br.com.project.modelo.Empresa;
 import br.com.project.modelo.Estado;
+import br.com.project.util.buscaEnderecoLatLong;
 
 /**
  * @author Maçana
@@ -35,6 +38,9 @@ public class EmpresaController {
 	
 	@Autowired
 	private EstadoDAO estadoDAO;
+	
+	@Autowired
+	private EmpresaBO empresaBO;
 	
 	@RequestMapping(value="/teste")
 	public String teste(){
@@ -51,23 +57,22 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/consultarEmpresas")
-	 public ModelAndView consultarEmpresas(HttpServletRequest request, HttpServletResponse response){
+	 public ModelAndView consultarEmpresas(HttpServletRequest request, HttpServletResponse response) throws JSONException, Exception{
 		ModelAndView modelAndView = new ModelAndView("../../index2");
 				
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
 		
-		
-		String uf = "RJ";
-		Estado estado = estadoDAO.buscaEstado(uf);
+		Estado estado = estadoDAO.buscaEstado(empresaBO.getEstado(latitude, longitude));
 		
 		modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro(estado));
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/retornoEmpresa")
-	public @ResponseBody void visualizarEmpresa(HttpServletRequest request, HttpServletResponse response,
+	@RequestMapping("/retornoEmpresa")
+	@ResponseBody
+	public void visualizarEmpresa(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "idtEmpresa", required = false) Integer idtEmpresa) throws Exception{
 		
 		response.setContentType("application/json");
@@ -80,7 +85,7 @@ public class EmpresaController {
 			Empresa empresa = empresaDAO.consultaPorIdt(idtEmpresa);
 			
 			ObjectMapper mapper = new ObjectMapper();
-			mapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
+			mapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, false);
 			String retorno = mapper.writeValueAsString(empresa);
 			
 			out = response.getWriter();
@@ -90,7 +95,5 @@ public class EmpresaController {
 		}catch(Exception e) {
 			System.out.println(e);
 		}
-		
 	}
-
 }

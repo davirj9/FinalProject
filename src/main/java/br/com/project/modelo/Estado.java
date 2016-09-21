@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  * @author Maçana
  *
@@ -24,8 +26,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="estado")
-public class Estado implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Estado {/*implements Serializable {
+	private static final long serialVersionUID = 1L;*/
 	
 	@Id
 	@GeneratedValue
@@ -43,6 +45,7 @@ public class Estado implements Serializable {
 	private Date dataInlcusao;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "estado")
+	@JsonIgnore
 	private Set<Cidade> cidades;
 
 	public Integer getIdtEstado() {

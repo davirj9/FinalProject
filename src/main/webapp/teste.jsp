@@ -1,59 +1,71 @@
-<html lang="pt">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
+	<meta charset="utf-8" />
+	<title>Cadastro</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<%@ include file="WEB-INF/views/compartilhado/_base_css_js.jsp"%>
+    
+<style type="text/css">
 
-<title>Nome da página</title>
+.container {
+	position: center;
+	height: 400px;
+  	width: 40%;
+	background-color:#C0C0C0;
+    border-radius: 10px;
+}	
+.form-group{
+	position: center;
+}
+ 
+</style>
 
-
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap-select.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/jquery-ui.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/bootstrap-submenu.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/webstuff/css/datepicker.css"
-	type="text/css" />
-<link rel="stylesheet" href="webstuff/css/style.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<head>
-<title>Matheus Piscioneri</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript">
-	$(document).ready(function() {
-			
-		$("a").click(function(event) {
-			var link = $(this);
-
-			if (link.attr("id").match("esconder"))
-				$("#MeuDiv").hide("slow");
-			else
-				$("#MeuDiv").show("slow");
-
-			event.preventDefault();
-
-		});
-		 
-	});
-</script>
 </head>
 <body>
-	<div id="MeuDiv"> Hello Word</div>
-	<a id="esconder">Esconder</a>
-	<a id="exibir">Mostrar</a>	
+<div class="global">
+	<div class="container">
+
+		<!-- Registration form - START -->
+		<div class="container">
+		    <div class="row">
+		        <form role="form" id="efetuarCadastroUsuario">
+		            <div class="col-lg-6">
+		                <div class="form-group">
+		                    <label for="InputName">Nome</label>
+		                    <div class="input-group">
+		                        <input type="text" class="form-control" name="InputNome" id="InputNome" placeholder="Nome" required>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label for="InputEmail">Email</label>
+		                    <div class="input-group">
+		                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Email" required>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label for="InputEmail">Confirmar Email</label>
+		                    <div class="input-group">
+		                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirmar Email" required>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label for="InputEmail">Senha</label>
+		                    <div class="input-group">
+		                        <input type="text" class="form-control" id="InputSenha" name="InputSenha" placeholder="Senha" required>
+		                    </div>
+		                </div>
+		                </br>
+		                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-left">
+		            </div>
+		        </form>
+		    </div>
+		</div>
+		<!-- Registration form - END -->
+	</div>
+	<%@ include file="WEB-INF/views/utils/footer.jsp"%>
+</div>
+<script type="text/javascript" src="webstuff/js/teste/teste.js"></script>
 </body>
 </html>

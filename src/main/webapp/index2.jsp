@@ -17,27 +17,30 @@
 			<%@ include file="WEB-INF/views/utils/_menu.jsp"%>
 		</div>
 		
-		<a id="esconder">Esconder</a>
-		<a id="exibir">Mostrar</a>
-		
-	
 		<div class="conteudo">
 			<div class="container-1">
 				<h1>O QUE VOCÊ ESTÁ PROCURANDO?</h1>
-					<div id="MeuDiv">
-						<%@ include
-							file="WEB-INF/views/consultaEmpresas/_consultaEmpresaNew.jsp"%>
-					</div>		
-				<table id="tableAjaxEmpresas" class="table table-hover">
-					<thead>
-							<tr>
-								<th style="display: none;">Id</th>
-								<th style="width: 2%">Id</th>
-								<th style="width: 8%">Nome Empresa</th>
-								<th style="width: 13%">Endereço</th>
-								<th style="width: 18%">Data de inclusão</th>
-								<th style="width: 10%">Perfil da empresa</th>
-							</tr>
+				
+				<a id="esconderMapa">Esconder</a>
+				<a id="exibirMapa">Mostrar</a><br>
+				<div id="divMapa">
+					<%@ include
+						file="WEB-INF/views/consultaEmpresas/_consultaEmpresaNew.jsp"%>
+				</div>
+				
+				<a id="esconderEmpresas">Esconder</a>
+				<a id="exibirEmpresas">Mostrar</a><br>
+				<div id="divEmpresas">			
+					<table id="tableAjaxEmpresas" class="table table-hover">
+						<thead>
+								<tr>
+									<th style="display: none;">Id</th>
+									<th style="width: 2%">Id</th>
+									<th style="width: 8%">Nome Empresa</th>
+									<th style="width: 13%">Endereço</th>
+									<th style="width: 18%">Data de inclusão</th>
+									<th style="width: 10%">Perfil da empresa</th>
+								</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="e" items="${empresas}" >
@@ -55,30 +58,30 @@
 							    </tr>
 							</c:forEach>
 						</tbody>
-				</table>				
-			</div>
-		</div>
-
-	<!-- Modal Visualizar Empresa-->
-	<div id="myModalVisualizar" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Teste</h4>
-			</div>
-			<div class="modal-body">
+					</table>
+				</div>				
+			
 				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
+				<div id="DivResultadoEmpresa">
+					<a id="esconderConsultaEmpresa">Esconder</a>
+					<a id="exibirConsultaEmpresa">Mostrar</a><br>
+					<div id="divConsultaEmpresas">
+						<table id="tableAjaxEmpresa" class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nome Empresa</th>
+									<th>Data de inclusão</th>
+									<th>Perfil</th>
+								</tr>
+							</thead>
+							<tbody id="bodyTemplateAjaxDadosEmpresa">
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>	
 		</div>
-
-	</div>
-</div>
-	
 		<%@ include file="WEB-INF/views/utils/footer.jsp"%>
 	</div>
 	

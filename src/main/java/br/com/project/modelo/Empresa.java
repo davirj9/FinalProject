@@ -25,8 +25,9 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "empresa")
-public class Empresa implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Empresa //implements Serializable 
+{
+	//private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -41,11 +42,11 @@ public class Empresa implements Serializable {
 	private Date data_inclusao;
 	
 	@JoinColumn(name = "idt_perfil", referencedColumnName = "idt_perfil")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private PerfilEmpresa perfilEmpresa;
 
 	@JoinColumn(name = "idt_usuario", referencedColumnName = "idt_usuario")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
 	
 	@Transient
