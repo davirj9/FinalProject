@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/webstuff/css/bootstrap-submenu.css"	type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/webstuff/css/datepicker.css" type="text/css" />		
 <link rel="stylesheet" href="<%=request.getContextPath()%>/webstuff/css/style2.css" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/webstuff/css/font-awesome.min.css" type="text/css" />
 
 <script type="text/javascript"	src="<%=request.getContextPath()%>/webstuff/js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript"	src="<%=request.getContextPath()%>/webstuff/js/jquery-ui.custom.min.js"></script>

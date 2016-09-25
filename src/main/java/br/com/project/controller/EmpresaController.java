@@ -39,8 +39,8 @@ public class EmpresaController {
 	@Autowired
 	private EstadoDAO estadoDAO;
 	
-	@Autowired
-	private EmpresaBO empresaBO;
+	//@Autowired
+	//private EmpresaBO empresaBO;
 	
 	@RequestMapping(value="/teste")
 	public String teste(){
@@ -63,9 +63,9 @@ public class EmpresaController {
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
 		
-		Estado estado = estadoDAO.buscaEstado(empresaBO.getEstado(latitude, longitude));
+		//Estado estado = estadoDAO.buscaEstado(empresaBO.getEstado(latitude, longitude));
 		
-		modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro(estado));
+		//modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro(estado));
 		
 		return modelAndView;
 	}

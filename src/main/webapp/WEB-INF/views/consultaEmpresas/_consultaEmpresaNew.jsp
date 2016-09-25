@@ -9,6 +9,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/webstuff/js/consultaEmpresas/consultaEmpresasNew.js"></script>
 <script type="text/javascript" src="webstuff/js/jquery-ui.custom.min.js"></script>
+<link rel="stylesheet" href="webstuff/css/style2.css">
 
 
 	<div id="apresentacao">
@@ -21,14 +22,14 @@
             
 			</div>
 					<div id="mapa"></div>
-					
-					<select name="">
+					<select name="tipos-de-servicos" class="">
 				<option value="farmacia">Farmácia</option>
 				<option value="farmacia">Farmácia</option>
 				<option value="farmacia">Farmácia</option>
 			</select> 
-			
-                    <input type="image" value="Enviar" id="btnEnviar" name="btnEnviar" 
+			<br>	
+					
+                    <input type="image" value="Enviar" id="btnEnviar" class="btnEnviar" name="btnEnviar" 
 					value="Enviar" src="webstuff/img/buscar.fw.png"></input>
 					<input type="hidden" id="txtLatitude" name="txtLatitude" />
                     <input type="hidden" id="txtLongitude" name="txtLongitude" />

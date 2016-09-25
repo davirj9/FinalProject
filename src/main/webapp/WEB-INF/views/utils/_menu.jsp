@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <meta charset="utf-8">
-<meta name="description" content="Pontos cardeais">
+<meta name="description" content="Find Here">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="webstuff/css/bootstrap.css">
@@ -13,24 +13,20 @@
 
 
 <header id="header" class="">
-			<div class="span12">
-				<div class="navbar">
-					<div class="navbar-inner">
-						
-						<a href="index2.jsp" class="brand"
-						style="position: relative; top: 5px; right: -25em;">
-						<img src="webstuff/img/logo.fw.png" /></a>
+				<div class="shell" style="background-color: #D95642;">
+						<div class="logo">
+							<a href="/?toHome=true"><img src="webstuff/img/logo.fw.png" /></a>
+						</div>	
+						<a href="index2.jsp" class="brand" style="position: relative; top: 5px; right: -25em;">
 						
 						<%@ include file="../cadastro/_cadastroDialog.jsp"%>
 						<%@ include file="../login/_loginDialog.jsp"%>
 						
 						<!--onde termina div procura-->
-					</div>
 				</div>
 				<!--onde termina o Div navegador-->
-			</div>
 			<!--onde termina o o Div Span que controla o Navegador-->
-		</header>
+</header>
 		
 		
 		<!--<ul class="nav" style="position: relative; top: 5px; right: -30em;">

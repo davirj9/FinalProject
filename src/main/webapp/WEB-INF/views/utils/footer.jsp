@@ -1,13 +1,42 @@
-<footer class="rodape"
-style="background-color: #ff7d7d;">Cadastrar	>
-		<ul class="nav nav-list pull-left">
-			<li class="nav-header"><font><font>Links do Site</font></font></li>
-			<li><a href="#"><font><font>TCC</font></font></a></li>
-			<li><a href="#"><font><font>FAQ</font></font></a></li>
-		</ul>
-		<ul class="nav nav-list pull-left">
-			<li class="nav-header"><font><font>Links Externos</font></font>
-			</li>
-			<li><a href="http://google.com.br" target="_blank"><font><font>Google.com</font></font></a></li>
-		</ul>
+<footer class="rodape">
+
+<div class="shell">		
+		
+			<div class="internal-links">				
+				
+					<div class="links">
+						<h3>Links do Site</h3>
+						<ul class="list-link">
+							<li class="internal-link"><a href="#" class="cousine-link">link</a></li>
+						</ul>
+
+						<h3>TCC</h3>
+						<ul class="list-link">
+							
+							<li class="internal-link"><a href="#" class="cousine-link">link</a></li>
+						</ul>
+						
+						<h3>FAQ</h3>
+						<ul class="list-link">
+							
+							<li class="internal-link"><a href="#" class="cousine-link">link</a></li>
+						</ul>
+					</div>				
+			</div>
+		
+		<div class="left">
+			
+		</div>
+		<!-- /.left -->
+		<div class="right"> 
+				
+					<p>
+						&copy; Copyright 2016 - Find Here - Todos os direitos reservados
+					</p>
+				
+			
+		</div>
+		<!-- /.right -->
+	</div>
+	<!-- /.shell -->
 	</footer>
