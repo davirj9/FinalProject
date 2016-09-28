@@ -5,13 +5,17 @@ package br.com.project.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,6 +39,9 @@ public class EnderecoEmpresa implements Serializable {
 	@Column(name = "bairro")
 	private String bairro;
 	
+	@Column(name = "uf")
+	private String uf;
+
 	@Column(name = "logradouro")  
     private String descricao_logradouro;
 	
@@ -50,18 +57,21 @@ public class EnderecoEmpresa implements Serializable {
 	
 	@Column(name = "NUM_CEP")  
     private String numCep;
+	
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "perfilEmpresa", fetch = FetchType.EAGER)
+    private Set<Empresa> Empresa;
 
 	/*@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
 	@OneToOne
 	private Empresa idtEmpresa;*/
 	
-	@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
+	/*@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
 	@ManyToOne
 	private Estado idtEstado;
 	
 	@JoinColumn(name = "idt_cidade", referencedColumnName = "idt_cidade")
 	@ManyToOne
-	private Cidade idtCidade;
+	private Cidade idtCidade;*/
 	
 	public Integer getIdtEndereco() {
 		return idtEndereco;
@@ -118,6 +128,21 @@ public class EnderecoEmpresa implements Serializable {
 	public void setNumCep(String numCep) {
 		this.numCep = numCep;
 	}
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public Set<Empresa> getEmpresa() {
+		return Empresa;
+	}
+
+	public void setEmpresa(Set<Empresa> empresa) {
+		Empresa = empresa;
+	}
 
 	/*public Empresa getIdtEmpresa() {
 		return idtEmpresa;
@@ -127,7 +152,7 @@ public class EnderecoEmpresa implements Serializable {
 		this.idtEmpresa = idtEmpresa;
 	}
 */
-	public Estado getIdtEstado() {
+	/*public Estado getIdtEstado() {
 		return idtEstado;
 	}
 
@@ -141,6 +166,6 @@ public class EnderecoEmpresa implements Serializable {
 
 	public void setIdtCidade(Cidade idtCidade) {
 		this.idtCidade = idtCidade;
-	}
+	}*/
 	
 }

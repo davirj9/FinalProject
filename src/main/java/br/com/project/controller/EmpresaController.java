@@ -4,6 +4,7 @@
 package br.com.project.controller;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
-import br.com.project.dao.EstadoDAO;
 import br.com.project.modelo.Empresa;
-import br.com.project.modelo.Estado;
-import br.com.project.util.buscaEnderecoLatLong;
 
 /**
  * @author Maçana
@@ -36,44 +34,45 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaDAO empresaDAO;
 	
-	@Autowired
-	private EstadoDAO estadoDAO;
-	
 	//@Autowired
-	//private EmpresaBO empresaBO;
+	//private EstadoDAO estadoDAO;
+	
+	@Autowired
+	private EmpresaBO empresaBO;
 	
 	@RequestMapping(value="/teste")
-	public String teste(){
+	public String teste(){	
 		return "teste";
 	}
 	
 	@RequestMapping("/carregarFindHere")
 	public ModelAndView carregarIndex(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("../../index2"); 
-		String uf = "RJ";
-		Estado estado = estadoDAO.buscaEstado(uf);
-		modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro(estado));		
+		modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro("RJ"));		
+		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/consultarEmpresas")
 	 public ModelAndView consultarEmpresas(HttpServletRequest request, HttpServletResponse response) throws JSONException, Exception{
 		ModelAndView modelAndView = new ModelAndView("../../index2");
-				
+		
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
 		
-		//Estado estado = estadoDAO.buscaEstado(empresaBO.getEstado(latitude, longitude));
+		String estado = empresaBO.getEstado(latitude, longitude);
+		List <Empresa> empresa =  (List<Empresa>) empresaDAO.buscarEmpresasPorFiltro(estado);
 		
-		//modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro(estado));
+		modelAndView.addObject("empresas", empresa);
 		
 		return modelAndView;
+	
 	}
 	
 	@RequestMapping("/retornoEmpresa")
 	@ResponseBody
 	public void visualizarEmpresa(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "idtEmpresa", required = false) Integer idtEmpresa) throws Exception{
+			@RequestParam(value = "idtEmpresa", required = false) Integer idtEmpresa) throws JSONException, Exception{
 		
 		response.setContentType("application/json");
 		PrintWriter out = null;

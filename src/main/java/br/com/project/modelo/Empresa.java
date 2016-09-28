@@ -45,24 +45,31 @@ public class Empresa //implements Serializable
 	@ManyToOne(fetch = FetchType.EAGER)
 	private PerfilEmpresa perfilEmpresa;
 
+	@JoinColumn(name = "idt_endereco", referencedColumnName = "idt_endereco")
+	@ManyToOne(fetch = FetchType.EAGER)
+	private EnderecoEmpresa enderecoEmpresa;
+	
 	@JoinColumn(name = "idt_usuario", referencedColumnName = "idt_usuario")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
 	
-	@Transient
+	/*@Transient
 	private PerfilEmpresa descricaoPerfil;
 	
-	@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
+	@Transient
+	private EnderecoEmpresa endereco_Empresa;*/
+	
+	/*@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
 	@OneToOne
-	private EnderecoEmpresa enderecoEmpresa;
+	private EnderecoEmpresa enderecoEmpresa;*/
 
-	public PerfilEmpresa getDescricaoPerfil() {
+	/*public PerfilEmpresa getDescricaoPerfil() {
 		return descricaoPerfil;
 	}
 
 	public void setDescricaoPerfil(PerfilEmpresa descricaoPerfil) {
 		this.descricaoPerfil = descricaoPerfil;
-	}
+	}*/
 	
 	public Integer getIdtEmpresa() {
 		return idtEmpresa;
@@ -119,5 +126,23 @@ public class Empresa //implements Serializable
 	public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
 		this.enderecoEmpresa = enderecoEmpresa;
 	}
+
+	/*public EnderecoEmpresa getEndereco_Empresa() {
+		return endereco_Empresa;
+	}
+
+	public void setEndereco_Empresa(EnderecoEmpresa endereco_Empresa) {
+		this.endereco_Empresa = endereco_Empresa;
+	}*/
+	
+	
+
+/*	public EnderecoEmpresa getEnderecoEmpresa() {
+		return enderecoEmpresa;
+	}
+
+	public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
+		this.enderecoEmpresa = enderecoEmpresa;
+	}*/
 
 }

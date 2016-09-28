@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="webstuff/css/style2.css">
 
 <meta name="theme-color" content="#bc2026"/>
-			<style>
+			<!--<style>
 				@media only screen and (min-width: 601px){
 					body.home .pac-geral .content { 
 						background-image: url(img-corpo.fw.png);
@@ -28,7 +28,7 @@
 						background-image: url(img-corpo.fw.png);
 					}
 				}
-			</style>
+			</style>-->
 
 <head>	
 <%@ include file="WEB-INF/views/compartilhado/_base_css_js.jsp"%>
@@ -41,8 +41,8 @@
 			<%@ include file="WEB-INF/views/utils/_menu.jsp"%>
 		</div>
 		
-		<a id="esconder">Esconder Mapa</a><br>
-		<a id="exibir">Mostrar Mapa</a>
+		<a id="esconderMapa">Esconder Mapa</a><br>
+		<a id="exibirMapa">Mostrar Mapa</a><br>
 		
 		<div class="conteudo">
 			<div class="box box1">
@@ -53,34 +53,37 @@
 						file="WEB-INF/views/consultaEmpresas/_consultaEmpresaNew.jsp"%>
 				</div>
 				
-				<table id="tableAjaxEmpresas" class="table table-hover">
-					<thead>
-							<tr>
-								<th style="display: none;">Id</th>
-								<th style="width: 2%">Id</th>
-								<th style="width: 8%">Nome Empresa</th>
-								<th style="width: 13%">Endereço</th>
-								<th style="width: 18%">Data de inclusão</th>
-								<th style="width: 10%">Perfil da empresa</th>
-							</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="e" items="${empresas}" >
-							<tr>
-								<td>${e.idtEmpresa}</td>
-								<td>${e.nomeEmpresa}</td>
-								<td>Estado: ${e.enderecoEmpresa.idtEstado.nomeEstado}
-									Bairro: ${e.enderecoEmpresa.bairro}
-									Logradouro: ${e.enderecoEmpresa.descricao_logradouro}
-									${e.enderecoEmpresa.numero}</td>
-								<td><fmt:formatDate value="${e.data_inclusao}" pattern="dd/MM/yyyy HH:mm:ss" /></td>
-								<td>${e.perfilEmpresa.descricaoPerfil}</td>
-								<td><input class="visualizarEmpresa" title="Visualizar empresa" name="${e.idtEmpresa}" type="image" src="webstuff/img/icones/eye.png"></input>
-								</td>
-						    </tr>
-						</c:forEach>
-					</tbody>
-				</table>			
+				<a id="esconderEmpresas">Esconder Empresas</a><br>
+				<a id="exibirEmpresas">Mostrar Empresas</a>
+				<div id="divEmpresas">
+					<table id="tableAjaxEmpresas" class="table table-hover">
+						<thead>
+								<tr>
+									<th style="display: none;">Id</th>
+									<th style="width: 2%">Id</th>
+									<th style="width: 8%">Nome Empresa</th>
+									<th style="width: 13%">Endereço</th>
+									<th style="width: 18%">Data de inclusão</th>
+									<th style="width: 10%">Perfil da empresa</th>
+								</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="e" items="${empresas}" >
+								<tr>
+									<td>${e.idtEmpresa}</td>
+									<td>${e.nomeEmpresa}</td>
+									<td>Estado: ${e.enderecoEmpresa.uf}
+										Bairro: ${e.enderecoEmpresa.bairro}
+										Logradouro: ${e.enderecoEmpresa.descricao_logradouro}
+										${e.enderecoEmpresa.numero}</td>
+									<td><fmt:formatDate value="${e.data_inclusao}" pattern="dd/MM/yyyy HH:mm:ss" /></td>
+									<td>${e.perfilEmpresa.descricaoPerfil}</td>
+									<td><input class="visualizarEmpresa" title="Visualizar empresa" name="${e.idtEmpresa}" type="image" src="webstuff/img/icones/eye.png"></input></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>	
+				</div>			
 					
 				<a id="esconderConsultaEmpresa">Esconder</a>
 				<a id="exibirConsultaEmpresa">Mostrar</a><br>

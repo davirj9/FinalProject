@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.modelo.Empresa;
-import br.com.project.modelo.Estado;
+import br.com.project.modelo.Usuario;
 import br.com.project.modelo.Usuario;
 
 /**
@@ -34,19 +34,21 @@ private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Collection<Empresa> buscarEmpresasPorFiltro(Estado estado) {
+	public Collection<Empresa> buscarEmpresasPorFiltro(String estado) {
 	
 		StringBuilder jpql = new StringBuilder();
 		
-		//jpql.append("SELECT e FROM Empresa e");
-		//jpql.append(" LEFT JOIN e.EnderecoEmpresa AS ee");
-		//jpql.append(" WHERE ee.idt_estado = ?1");
-		
 		jpql.append("SELECT e FROM Empresa e");
+		
+		if()
+		//jpql.append(" LEFT JOIN e.EnderecoEmpresa AS ee");
+		//jpql.append("WHERE e.uf = ?1");
+		
+		//jpql.append("SELECT e FROM Empresa e");
 		
 		Query query = entityManager.createQuery(jpql.toString());
 		
-		//query.setParameter(1, estado.getIdtEstado());
+		//query.setParameter(1, estado);
 		
 		return (Collection<Empresa>) query.getResultList();
 	}

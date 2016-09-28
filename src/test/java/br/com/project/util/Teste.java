@@ -24,10 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.sun.jndi.cosnaming.IiopUrl.Address;
-
-import br.com.project.dao.EstadoDAO;
-import br.com.project.daoimpl.EstadoDAOImpl;
-import br.com.project.modelo.Estado;
 import br.com.project.modelo.Usuario;
 
 /**

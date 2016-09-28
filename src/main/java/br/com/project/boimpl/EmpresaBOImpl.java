@@ -12,31 +12,31 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.project.bo.EmpresaBO;
+import br.com.project.dao.EmpresaDAO;
 import br.com.project.modelo.Empresa;
 
 /**
  * @author Maçana
  *
  */
+@Service
 public class EmpresaBOImpl implements EmpresaBO{
 	
 	@Autowired
-	private EmpresaBO empresaBO;
+	private EmpresaDAO empresaDAO;
 	
-	@Autowired
-	private EmpresaBO empresaDAO;
-	
-	public Collection<Empresa> buscaEmpresas(){
-		return empresaDAO.buscaEmpresas();		
+	public Collection<Empresa> buscaEmpresas(String estado){
+		return empresaDAO.buscarEmpresasPorFiltro(estado);		
 	}
 	
 	public String getEstado(String latitude, String longitude) throws JSONException, Exception{
 		
 		String estado = null;
 		JSONObject jsonObject = new JSONObject(
-				readUrl("https://maps.google.com/maps/api/geocode/json?address=-22.8688003,-43.3640886"));
+				readUrl("https://maps.google.com/maps/api/geocode/json?address="+latitude+","+longitude));
 
 		if ("OK".equalsIgnoreCase(jsonObject.getString("status"))) {
 			for (int i = 1; i < ((JSONArray) jsonObject.get("results")).length() - 2; i++) {
@@ -72,5 +72,4 @@ public class EmpresaBOImpl implements EmpresaBO{
 				reader.close();
 		}
 	}
-	
 }

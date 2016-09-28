@@ -107,10 +107,7 @@ $(document).ready(function () {
 				longitude : longitude
 			},
 			success : function(data) {
-				
 			}
-		})	
-		
+		})
 	});
-
 });

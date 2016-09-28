@@ -15,7 +15,7 @@ import br.com.project.modelo.Empresa;
  */
 public interface EmpresaBO {
 
-	public abstract Collection<Empresa> buscaEmpresas();
+	public abstract Collection<Empresa> buscaEmpresas(String estado);
 	public abstract String getEstado(String Latitude, String Longitude) throws JSONException, Exception;
 	public abstract String readUrl(String urlString) throws Exception;
 }

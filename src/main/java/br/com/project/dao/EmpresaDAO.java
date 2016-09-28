@@ -6,7 +6,6 @@ package br.com.project.dao;
 import java.util.Collection;
 
 import br.com.project.modelo.Empresa;
-import br.com.project.modelo.Estado;
 
 
 /**
@@ -15,7 +14,7 @@ import br.com.project.modelo.Estado;
  */
 public interface EmpresaDAO {
 	
-	public abstract Collection<Empresa> buscarEmpresasPorFiltro(Estado estado);
+	public abstract Collection<Empresa> buscarEmpresasPorFiltro(String estado);
 	public abstract Empresa consultaPorIdt(Integer idtEmpresa);
 
 }

@@ -6,9 +6,9 @@ $(function() {
 		var link = $(this);
 
 		if (link.attr("id").match("esconderMapa"))
-			$("#divMapa").hide("slow");
+			$("#MeuDiv").hide("slow");
 		if (link.attr("id").match("exibirMapa"))
-			$("#divMapa").show("slow");
+			$("#MeuDiv").show("slow");
 		if (link.attr("id").match("esconderEmpresas"))
 			$("#divEmpresas").hide("slow");
 		if (link.attr("id").match("exibirEmpresas"))
