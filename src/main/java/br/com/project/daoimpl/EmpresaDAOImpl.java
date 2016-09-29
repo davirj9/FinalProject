@@ -4,6 +4,7 @@
 package br.com.project.daoimpl;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -34,23 +35,21 @@ private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Collection<Empresa> buscarEmpresasPorFiltro(String estado) {
+	public List<Empresa> buscarEmpresasPorFiltro(String estado) {
 	
 		StringBuilder jpql = new StringBuilder();
 		
-		jpql.append("SELECT e FROM Empresa e");
+		jpql.append("FROM Empresa e");
 		
-		if()
-		//jpql.append(" LEFT JOIN e.EnderecoEmpresa AS ee");
-		//jpql.append("WHERE e.uf = ?1");
-		
-		//jpql.append("SELECT e FROM Empresa e");
+		if(estado != null)
+			jpql.append(" WHERE e.enderecoEmpresa.uf = ?1");
 		
 		Query query = entityManager.createQuery(jpql.toString());
 		
-		//query.setParameter(1, estado);
+		if(estado != null)
+			query.setParameter(1, estado);
 		
-		return (Collection<Empresa>) query.getResultList();
+		return (List<Empresa>) query.getResultList();
 	}
 	
 	@Override

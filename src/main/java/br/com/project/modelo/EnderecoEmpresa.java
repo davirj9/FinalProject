@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "endereco_empresa")
-public class EnderecoEmpresa implements Serializable {
+public class EnderecoEmpresa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -58,21 +58,9 @@ public class EnderecoEmpresa implements Serializable {
 	@Column(name = "NUM_CEP")  
     private String numCep;
 	
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "perfilEmpresa", fetch = FetchType.EAGER)
+	@OneToMany(/*cascade = CascadeType.MERGE,*/ mappedBy = "perfilEmpresa"/*, fetch = FetchType.EAGER*/)
     private Set<Empresa> Empresa;
 
-	/*@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
-	@OneToOne
-	private Empresa idtEmpresa;*/
-	
-	/*@JoinColumn(name = "idt_estado", referencedColumnName = "idt_estado")
-	@ManyToOne
-	private Estado idtEstado;
-	
-	@JoinColumn(name = "idt_cidade", referencedColumnName = "idt_cidade")
-	@ManyToOne
-	private Cidade idtCidade;*/
-	
 	public Integer getIdtEndereco() {
 		return idtEndereco;
 	}
@@ -87,6 +75,14 @@ public class EnderecoEmpresa implements Serializable {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
 	public String getDescricao_logradouro() {
@@ -128,13 +124,6 @@ public class EnderecoEmpresa implements Serializable {
 	public void setNumCep(String numCep) {
 		this.numCep = numCep;
 	}
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
 
 	public Set<Empresa> getEmpresa() {
 		return Empresa;
@@ -143,29 +132,6 @@ public class EnderecoEmpresa implements Serializable {
 	public void setEmpresa(Set<Empresa> empresa) {
 		Empresa = empresa;
 	}
-
-	/*public Empresa getIdtEmpresa() {
-		return idtEmpresa;
-	}
-
-	public void setIdtEmpresa(Empresa idtEmpresa) {
-		this.idtEmpresa = idtEmpresa;
-	}
-*/
-	/*public Estado getIdtEstado() {
-		return idtEstado;
-	}
-
-	public void setIdtEstado(Estado idtEstado) {
-		this.idtEstado = idtEstado;
-	}
-
-	public Cidade getIdtCidade() {
-		return idtCidade;
-	}
-
-	public void setIdtCidade(Cidade idtCidade) {
-		this.idtCidade = idtCidade;
-	}*/
+	
 	
 }

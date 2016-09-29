@@ -4,6 +4,7 @@
 package br.com.project.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,9 +62,9 @@ public class EmpresaController {
 		String longitude = request.getParameter("longitude");
 		
 		String estado = empresaBO.getEstado(latitude, longitude);
-		List <Empresa> empresa =  (List<Empresa>) empresaDAO.buscarEmpresasPorFiltro(estado);
+		List <Empresa> empresas =  (List<Empresa>) empresaDAO.buscarEmpresasPorFiltro(estado);
 		
-		modelAndView.addObject("empresas", empresa);
+		modelAndView.addObject("empresas", empresas);
 		
 		return modelAndView;
 	
@@ -76,6 +77,7 @@ public class EmpresaController {
 		
 		response.setContentType("application/json");
 		PrintWriter out = null;
+		HashMap<String, Object> hash = new HashMap<String, Object>();
 		try {
 			
 			out = response.getWriter();
@@ -83,9 +85,16 @@ public class EmpresaController {
 			
 			Empresa empresa = empresaDAO.consultaPorIdt(idtEmpresa);
 			
+			hash.put("nome", empresa.getNomeEmpresa());
+			hash.put("bairro", empresa.getEnderecoEmpresa().getBairro());
+			hash.put("uf", empresa.getEnderecoEmpresa().getUf());
+			hash.put("cep", empresa.getEnderecoEmpresa().getNumCep());
+			hash.put("numero", empresa.getEnderecoEmpresa().getNumero());
+			hash.put("descricao", empresa.getPerfilEmpresa().getDescricaoPerfil());
+			
 			ObjectMapper mapper = new ObjectMapper();
 			mapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, false);
-			String retorno = mapper.writeValueAsString(empresa);
+			String retorno = mapper.writeValueAsString(hash);
 			
 			out = response.getWriter();
 			jSon.put(retorno, retorno);

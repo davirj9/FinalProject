@@ -33,14 +33,14 @@ public class Usuario implements Serializable{
 	@Column(name="email_usuario")
 	private String emailUsuario;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+	@OneToMany(/*cascade = CascadeType.MERGE,*/mappedBy = "usuario")
 	private Set<Empresa> empresa;
-	
-	public Integer getIdUsuario() {
+
+	public Integer getIdtUsuario() {
 		return idtUsuario;
 	}
 
-	public void setIdUsuario(Integer idtUsuario) {
+	public void setIdtUsuario(Integer idtUsuario) {
 		this.idtUsuario = idtUsuario;
 	}
 
@@ -68,5 +68,11 @@ public class Usuario implements Serializable{
 		this.emailUsuario = emailUsuario;
 	}
 
+	public Set<Empresa> getEmpresa() {
+		return empresa;
+	}
 
+	public void setEmpresa(Set<Empresa> empresa) {
+		this.empresa = empresa;
+	}
 }

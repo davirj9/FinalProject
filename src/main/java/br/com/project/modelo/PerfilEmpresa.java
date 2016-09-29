@@ -22,9 +22,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="perfilEmpresa")
-public class PerfilEmpresa //implements Serializable 
-{
-	//private static final long serialVersionUID = 1L;
+public class PerfilEmpresa implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -34,9 +33,9 @@ public class PerfilEmpresa //implements Serializable
 	@Column(name="descricao_perfil")
 	private String descricaoPerfil;
 
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "perfilEmpresa", fetch = FetchType.EAGER)
+	@OneToMany(/*cascade = CascadeType.MERGE,*/ mappedBy = "perfilEmpresa"/*, fetch = FetchType.EAGER*/)
     private Set<Empresa> Empresa;
-	
+
 	public Integer getIdtPerfil() {
 		return idtPerfil;
 	}
@@ -52,6 +51,13 @@ public class PerfilEmpresa //implements Serializable
 	public void setDescricaoPerfil(String descricaoPerfil) {
 		this.descricaoPerfil = descricaoPerfil;
 	}
-	
+
+	public Set<Empresa> getEmpresa() {
+		return Empresa;
+	}
+
+	public void setEmpresa(Set<Empresa> empresa) {
+		Empresa = empresa;
+	}
 	
 }

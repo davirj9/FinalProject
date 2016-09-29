@@ -25,9 +25,8 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "empresa")
-public class Empresa //implements Serializable 
-{
-	//private static final long serialVersionUID = 1L;
+public class Empresa implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -52,41 +51,15 @@ public class Empresa //implements Serializable
 	@JoinColumn(name = "idt_usuario", referencedColumnName = "idt_usuario")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
-	
-	/*@Transient
-	private PerfilEmpresa descricaoPerfil;
-	
-	@Transient
-	private EnderecoEmpresa endereco_Empresa;*/
-	
-	/*@JoinColumn(name = "idt_empresa", referencedColumnName = "idt_empresa")
-	@OneToOne
-	private EnderecoEmpresa enderecoEmpresa;*/
 
-	/*public PerfilEmpresa getDescricaoPerfil() {
-		return descricaoPerfil;
-	}
-
-	public void setDescricaoPerfil(PerfilEmpresa descricaoPerfil) {
-		this.descricaoPerfil = descricaoPerfil;
-	}*/
-	
 	public Integer getIdtEmpresa() {
 		return idtEmpresa;
 	}
-	
+
 	public void setIdtEmpresa(Integer idtEmpresa) {
 		this.idtEmpresa = idtEmpresa;
 	}
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
 	}
@@ -101,14 +74,6 @@ public class Empresa //implements Serializable
 
 	public void setData_inclusao(Date data_inclusao) {
 		this.data_inclusao = data_inclusao;
-	}
-
-	public Usuario getIdtUsuario() {
-		return usuario;
-	}
-
-	public void setIdtUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 	public PerfilEmpresa getPerfilEmpresa() {
@@ -127,22 +92,12 @@ public class Empresa //implements Serializable
 		this.enderecoEmpresa = enderecoEmpresa;
 	}
 
-	/*public EnderecoEmpresa getEndereco_Empresa() {
-		return endereco_Empresa;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setEndereco_Empresa(EnderecoEmpresa endereco_Empresa) {
-		this.endereco_Empresa = endereco_Empresa;
-	}*/
-	
-	
-
-/*	public EnderecoEmpresa getEnderecoEmpresa() {
-		return enderecoEmpresa;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-
-	public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
-		this.enderecoEmpresa = enderecoEmpresa;
-	}*/
-
+	
 }
