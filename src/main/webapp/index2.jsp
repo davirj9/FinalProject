@@ -93,8 +93,12 @@
 							<thead>
 								<tr>
 									<th>Nome Empresa</th>
-									<th>Data de inclusão</th>
-									<th>Perfil</th>
+									<th>Uf:</th>
+									<th>Bairro:</th>
+									<th>Logradouro:</th>
+									<th>Número:</th>
+									<th>Cep:</th>
+									<th>Perfil:</th>
 								</tr>
 							</thead>
 							<tbody id="bodyTemplateAjaxDadosEmpresa">

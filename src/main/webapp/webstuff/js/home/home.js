@@ -40,13 +40,17 @@ $(function() {
 					var dados = '<table id="tableAjaxEmpresa" class="table table-hover">';
 					dados += 	'<thead>';
 					dados +=		'<tr>';
-					dados += 			'<th>'+json.nomeEmpresa+'</th>';
-					dados += 			'<th>'+json.data_inclusao+'</th>';
-					dados += 			'<th>'+json.descricaoPerfil+'</th>';			
+					dados += 			'<th>'+json.nome+'</th>';
+					dados += 			'<th>'+json.uf+'</th>';
+					dados += 			'<th>'+json.bairro+'</th>';
+					dados += 			'<th>'+json.descricao_logradouro+'</th>';
+					dados += 			'<th>'+json.numero+'</th>';
+					dados += 			'<th>'+json.cep+'</th>';
+					dados += 			'<th>'+json.descricao+'</th>';
 					dados +=   		 '</tr>';
 					dados += 	'</thead>';
 					dados += '</table>';
-						
+					
 					$("#bodyTemplateAjaxDadosEmpresa").html(dados);	
 				}
 			})
