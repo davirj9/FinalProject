@@ -41,10 +41,9 @@
 			<%@ include file="WEB-INF/views/utils/_menu.jsp"%>
 		</div>
 		
-		<a id="esconderMapa">Esconder Mapa</a><br>
-		<a id="exibirMapa">Mostrar Mapa</a><br>
-		
 		<div class="conteudo">
+			<a id="esconderMapa" class="glyphicon glyphicon-minus"></a>
+			<a id="exibirMapa" class="glyphicon glyphicon-plus"></a><br>
 			<div class="box box1">
 				<h1>O QUE VOCÊ ESTÁ PROCURANDO?</h1>
 				
@@ -53,36 +52,41 @@
 						file="WEB-INF/views/consultaEmpresas/_consultaEmpresaNew.jsp"%>
 				</div>
 				
-				<a id="esconderEmpresas">Esconder Empresas</a><br>
-				<a id="exibirEmpresas">Mostrar Empresas</a>
-				<div id="divEmpresas">
-					<div id="tabelaEmpresaAjax">
-						<%@ include file="WEB-INF/views/consultaEmpresas/_resultadoConsultaEmpresa.jsp"%>
-					</div>			
+				<div class="well">
+					<a id="esconderEmpresas" class="glyphicon glyphicon-minus"></a>
+					<a id="exibirEmpresas" class="glyphicon glyphicon-plus"></a><br>
+					<div id="divEmpresas">
+						<div id="tabelaEmpresaAjax">
+							<%@ include file="WEB-INF/views/consultaEmpresas/_resultadoConsultaEmpresa.jsp"%>
+						</div>			
+					</div>
 				</div>	
-				<a id="esconderConsultaEmpresa">Esconder</a>
-				<a id="exibirConsultaEmpresa">Mostrar</a><br>
-				<div id="DivResultadoEmpresa">
-					<div id="divConsultaEmpresas">
-						<table id="tableAjaxEmpresa" class="table table-hover">
-							<thead>
-								<tr>
-									<th>Nome Empresa</th>
-									<th>Uf:</th>
-									<th>Bairro:</th>
-									<th>Logradouro:</th>
-									<th>Número:</th>
-									<th>Cep:</th>
-									<th>Perfil:</th>
-								</tr>
-							</thead>
-							<tbody id="bodyTemplateAjaxDadosEmpresa">
-							
-							</tbody>
-						</table>
+				
+				<div class="well">
+					<a id="esconderConsultaEmpresa" class="glyphicon glyphicon-minus"></a>
+					<a id="exibirConsultaEmpresa" class="glyphicon glyphicon-plus"></a>
+					
+					<div id="DivResultadoEmpresa">
+						<div id="divConsultaEmpresas">
+							<table id="tableAjaxEmpresa" class="table table-hover">
+								<thead>
+									<tr>
+										<th>Nome Empresa</th>
+										<th>Uf:</th>
+										<th>Bairro:</th>
+										<th>Logradouro:</th>
+										<th>Número:</th>
+										<th>Cep:</th>
+										<th>Perfil:</th>
+									</tr>
+								</thead>
+								<tbody id="bodyTemplateAjaxDadosEmpresa">
+								
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
-				
 			</div>	
 		</div>
 		<%@ include file="WEB-INF/views/utils/footer.jsp"%>

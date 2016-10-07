@@ -6,11 +6,7 @@
 <script src="webstuff/js/bootstrap.js"></script>
 	
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-mini btn-primary" data-toggle="modal" 
-	data-target="#myModalCadastro"
-	style="position: relative; top: 5px; right: -70em;">Cadastrar
-<i class="icon-off"></i>
-</button>
+
 						
 	<!-- Modal Cadastro -->
 	<div id="myModalCadastro" class="modal fade" role="dialog">
