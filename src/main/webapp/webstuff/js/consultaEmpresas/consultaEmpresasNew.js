@@ -101,12 +101,19 @@ $(document).ready(function () {
 		$.ajax({
 			url : "consultarEmpresas",
 			type : "POST",
-			cache : false,
 			data : {
 				latitude : latitude,
 				longitude : longitude
 			},
 			success : function(data) {
+				$('#tabelaEmpresaAjax').html(data);
+				$('.infoTooltip').removeData('tooltip'); 
+				$(".infoTooltip").tooltip({
+					 hide: {
+						 effect: "explode",
+						 delay: 250
+					 }
+				});
 			}
 		})
 	});

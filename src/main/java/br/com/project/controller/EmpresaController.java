@@ -16,7 +16,9 @@ import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,33 +43,33 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaBO empresaBO;
 	
-	@RequestMapping(value="/teste")
+	/*@RequestMapping(value="/teste")
 	public String teste(){	
 		return "teste";
-	}
+	}*/
 	
 	@RequestMapping("/carregarFindHere")
 	public ModelAndView carregarIndex(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("../../index2"); 
-		modelAndView.addObject("empresas", empresaDAO.buscarEmpresasPorFiltro("RJ"));		
+		
+		//List<Empresa> empresas = empresaDAO.buscarEmpresasPorFiltro("RJ");
+		//modelAndView.addObject("empresas", empresas);		
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/consultarEmpresas")
-	 public ModelAndView consultarEmpresas(HttpServletRequest request, HttpServletResponse response) throws JSONException, Exception{
-		ModelAndView modelAndView = new ModelAndView("../../index2");
-		
+	@RequestMapping(value="/consultarEmpresas", method = RequestMethod.POST)
+	 public String consultarEmpresas(Model model, HttpServletRequest request) throws JSONException, Exception{
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
 		
 		String estado = empresaBO.getEstado(latitude, longitude);
-		List <Empresa> empresas =  (List<Empresa>) empresaDAO.buscarEmpresasPorFiltro(estado);
 		
-		modelAndView.addObject("empresas", empresas);
+		List<Empresa> empresas = empresaDAO.buscarEmpresasPorFiltro(estado);
 		
-		return modelAndView;
-	
+		model.addAttribute("empresas", empresas);
+		
+		return "consultaEmpresas/_resultadoConsultaEmpresa";
 	}
 	
 	@RequestMapping("/retornoEmpresa")
