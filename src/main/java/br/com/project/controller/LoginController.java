@@ -32,6 +32,11 @@ public class LoginController {
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 	
+	@RequestMapping("/carregarLogin")
+	public String carregarLogin(Usuario usuario, HttpSession session) throws Exception{
+		return "login/_login";
+	}
+	
 	@RequestMapping("/efetuarLoginUsuario")
 	public ModelAndView loginUsuario(Usuario usuario, HttpSession session) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
@@ -43,6 +48,12 @@ public class LoginController {
 			modelAndView.setViewName("falha");
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping("/carregarCadastro")
+	public String carregarCadastro(HttpServletRequest request, HttpServletResponse response){
+		
+		return "cadastro/_cadastroDialog.jsp";
 	}
 	
 	public @ResponseBody void cadastroUsuario(HttpServletRequest request, HttpServletResponse response,
@@ -72,14 +83,12 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/usuarios")  
-	 public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
 	
 		ModelAndView modelAndView = new ModelAndView("_tabelaUsuarios");
 		
 		modelAndView.addObject("usuarios", usuarioDAO.buscarUsuarios());
 		
-		return modelAndView;  
-	  
-	 }
-
+		return modelAndView;
+	}
 }

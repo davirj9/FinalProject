@@ -2,10 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<title>Daniel Advogados</title>
-<script src="webstuff/js/jquery-1.10.1.min.js"></script>
-<script src="webstuff/js/jquery.js"></script>
-<script src="webstuff/js/bootstrap.js"></script>
+<title>Find Here</title>
+<%@ include file="../compartilhado/_base_css_js.jsp"%>
 
 <style type="text/css">
 	body {
@@ -52,27 +50,31 @@
 		<div class="panel-body">
 			<form id="formLoginUser" method="post" action="efetuarLoginUsuario">
 				<div class="input-group">
-					<span class="input-group-addon"> 
-					<img alt="Usuário" src="/webstuff/img/icones/usuario_20x20.png"> </span> 
+					<span> <img alt="Usuário" src="webstuff/img/icones/usuario_20x20.png"> </span> 
+					
 					<input type="text"
-						class="form-control" placeholder="Usuário" name="loginUsuario" value="${loginUsuario}">
+						class="form-control" placeholder="Usuário" name="EmailUsuario" value="${loginUsuario}">
 				</div>
+				
 				<div class="espacoTop"></div>
+				
 				<div class="input-group">
-					<span class="input-group-addon"><img alt="Usuário" src="/webstuff/img/icones/cadeado_20x20.png"></span> 
+					<span> <img alt="Usuário" src="webstuff/img/icones/cadeado_20x20.png"></span> 
+					
 					<input type="password"
 						class="form-control" placeholder="Senha" name="senhaUsuario" maxlength="8">
 				</div>
+				
 				<div class="espacoTop"></div>
 				
 				<h6>${msgErro}</h6>
 				
 				<input name="submit" value="Efetuar Login" type="submit" class="btn btn-primary submitButton"/>
+				
 				<a href="#" class="linkSenha">Esqueci minha senha</a>
 			</form>
 
 		</div>
 	</div>
-
 </body>
 </html>

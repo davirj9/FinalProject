@@ -55,8 +55,8 @@
 				</center>
 
 				<div style="position: relative; left: -34px;">
-				<%@ include file="WEB-INF/views/cadastro/_cadastroDialog.jsp"%>
-				<%@ include file="WEB-INF/views/login/_loginDialog.jsp"%>
+				<%@ include file="WEB-INF/views/cadastro/_cadastro.jsp"%>
+				<%@ include file="WEB-INF/views/login/_login.jsp"%>
 				<%@ include file="WEB-INF/views/consultaEmpresas/_consultaEmpresaDialog.jsp"%>
 				</div>
 				
