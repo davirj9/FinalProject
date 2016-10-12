@@ -44,11 +44,12 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("usuarioLogado", usuario);
 			model.addAttribute("usuarioLogado",usuario.getEmailUsuario().toUpperCase());
+			return "../../index2";
 		}	
 		else{
-			return "falha";
+			model.addAttribute("msgErro","Usuário ou senha informado é inválido.");
+			return "login/_login";
 		}
-	return "../../index2";
 	}
 	
 	@RequestMapping("/deslogarUsuario")
