@@ -12,9 +12,21 @@
 
 <span class="img-responsive"><img src="webstuff/img/logo.fw.png" /></span>
 
-<button type="button" id="carregarCadastrar" class="btn btn-mini btn-primary" action="">Cadastrar
-	<i class="icon-off"></i>
-</button>
-<button type="button" id="carregarLogin" class="btn btn-mini btn-danger" action="carregarLogin" >Login
-	<i class="icon-off"></i>
-</button>
+<c:choose>
+  <c:when test="${empty usuarioLogado}">
+	<button type="button" id="carregarCadastrar" class="btn btn-mini btn-primary" action="">Cadastrar
+		<i class="icon-off"></i>
+	</button>
+	<button type="button" id="carregarLogin" class="btn btn-mini btn-danger" action="carregarLogin" >Login
+		<i class="icon-off"></i>
+	</button>
+  </c:when>
+  <c:otherwise>
+ 	 <button type="button" id="editarCadastrarEmpresa" class="btn btn-mini btn-primary" action="">Editar/Cadastrar Empresa
+		<i class="glyphicon glyphicon-pencil"></i>
+	</button>
+	<button type="button" id="deslogarUsuario" class="btn btn-mini btn-danger" action="deslogarUsuario" >Sair
+		<i class="icon-off"></i>
+	</button>
+  </c:otherwise>
+</c:choose>

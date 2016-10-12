@@ -14,6 +14,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,16 +39,29 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/efetuarLoginUsuario")
-	public ModelAndView loginUsuario(Usuario usuario, HttpSession session) throws Exception{
-		ModelAndView modelAndView = new ModelAndView();
-		
+	public String loginUsuario(Usuario usuario, HttpServletRequest request, Model model) throws Exception{
 		if(usuarioDAO.autenticaUsuario(usuario)){
+			HttpSession session = request.getSession();
 			session.setAttribute("usuarioLogado", usuario);
-			modelAndView.setViewName("../../index2");
-		}else
-			modelAndView.setViewName("falha");
-		
-		return modelAndView;
+			model.addAttribute("usuarioLogado",usuario.getEmailUsuario().toUpperCase());
+		}	
+		else{
+			return "falha";
+		}
+	return "../../index2";
+	}
+	
+	@RequestMapping("/deslogarUsuario")
+	public String deslogarUsuario(HttpServletRequest request, Model model) throws Exception{
+		try {
+			HttpSession session = request.getSession();
+			session.setAttribute("usuarioLogado", null);
+			model.addAttribute("usuarioLogado", null);
+			
+		}catch(Exception e){
+			System.out.println(e);
+		 }
+	return "../../index2";
 	}
 	
 	@RequestMapping("/carregarCadastro")
