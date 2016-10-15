@@ -58,6 +58,12 @@ public class EnderecoEmpresa implements Serializable{
 	@Column(name = "NUM_CEP")  
     private String numCep;
 	
+	@Column(name="latitude")
+	private String latitude;
+	
+	@Column(name="longitude")
+	private String longitude;
+	
 	@OneToMany(/*cascade = CascadeType.MERGE,*/ mappedBy = "perfilEmpresa"/*, fetch = FetchType.EAGER*/)
     private Set<Empresa> Empresa;
 
@@ -132,6 +138,20 @@ public class EnderecoEmpresa implements Serializable{
 	public void setEmpresa(Set<Empresa> empresa) {
 		Empresa = empresa;
 	}
-	
-	
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
 }

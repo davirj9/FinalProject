@@ -20,6 +20,8 @@ function initialize() {
 	});
 	
 	marker.setPosition(latlng);
+	
+	$("#perfis").val("${requestScope.selectedPerfil}").attr('selected', 'selected');
 }
 
 $(document).ready(function () {

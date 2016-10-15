@@ -58,6 +58,5 @@ public class PerfilEmpresa implements Serializable{
 
 	public void setEmpresa(Set<Empresa> empresa) {
 		Empresa = empresa;
-	}
-	
+	}	
 }

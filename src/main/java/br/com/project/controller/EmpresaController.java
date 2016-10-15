@@ -25,7 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
+import br.com.project.dao.PerfilEmpresaDAO;
 import br.com.project.modelo.Empresa;
+import br.com.project.modelo.PerfilEmpresa;
 
 /**
  * @author Maçana
@@ -37,12 +39,11 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaDAO empresaDAO;
 	
-	//@Autowired
-	//private EstadoDAO estadoDAO;
-	
 	@Autowired
 	private EmpresaBO empresaBO;
 	
+	@Autowired
+	private PerfilEmpresaDAO perfilEmpresaDAO;
 	/*@RequestMapping(value="/teste")
 	public String teste(){	
 		return "teste";
@@ -52,9 +53,8 @@ public class EmpresaController {
 	public ModelAndView carregarIndex(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("../../index2"); 
 		
-		//List<Empresa> empresas = empresaDAO.buscarEmpresasPorFiltro("RJ");
-		//modelAndView.addObject("empresas", empresas);		
-		
+		//List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
+		//modelAndView.addObject("perfis", perfis);
 		return modelAndView;
 	}
 	

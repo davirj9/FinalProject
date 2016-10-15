@@ -21,12 +21,12 @@
            		<input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
             
 			</div>
-					<div id="mapa"></div>
-					<select name="tipos-de-servicos" class="">
-				<option value="farmacia">Farmácia</option>
-				<option value="farmacia">Farmácia</option>
-				<option value="farmacia">Farmácia</option>
-			</select> 
+			<select id="perfis" name="perfis">
+			    <c:forEach var="perfis" items="${p}">
+			    	<option value="${perfis.idtPerfil}">${perfis.descricaoPerfil}</option>
+				</c:forEach>
+			</select>
+			<div id="mapa"></div>  
 			<br>	
 					
                     <input type="image" value="Enviar" id="btnEnviar" class="btnEnviar" name="btnEnviar" 
