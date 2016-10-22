@@ -4,6 +4,7 @@
 package br.com.project.controller;
 
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,6 +29,7 @@ import br.com.project.dao.EmpresaDAO;
 import br.com.project.dao.PerfilEmpresaDAO;
 import br.com.project.modelo.Empresa;
 import br.com.project.modelo.PerfilEmpresa;
+import br.com.project.vo.EmpresaVO;
 
 /**
  * @author Maçana
@@ -53,8 +55,9 @@ public class EmpresaController {
 	public ModelAndView carregarIndex(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("../../index2"); 
 		
-		//List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
-		//modelAndView.addObject("perfis", perfis);
+		List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
+		modelAndView.addObject("perfis", perfis);
+		
 		return modelAndView;
 	}
 	
@@ -62,12 +65,16 @@ public class EmpresaController {
 	 public String consultarEmpresas(Model model, HttpServletRequest request) throws JSONException, Exception{
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
+		Integer raio = Integer.parseInt(request.getParameter("raio"));
 		
-		String estado = empresaBO.getEstado(latitude, longitude);
+		//String estado = empresaBO.getEstado(latitude, longitude);
 		
-		List<Empresa> empresas = empresaDAO.buscarEmpresasPorFiltro(estado);
+		//List<Empresa> empresas = empresaDAO.buscarEmpresasPorFiltro(estado);
+		
+		Collection<EmpresaVO> empresas = empresaBO.buscaEmpresasLatLong(latitude, longitude, raio);
 		
 		model.addAttribute("empresas", empresas);
+		//model.addAttribute("empresas", empresaVO);
 		
 		return "consultaEmpresas/_resultadoConsultaEmpresa";
 	}

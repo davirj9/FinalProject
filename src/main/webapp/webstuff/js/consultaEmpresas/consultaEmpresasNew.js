@@ -99,13 +99,15 @@ $(document).ready(function () {
 		var endereco = $("#txtEndereco").val();
 		var latitude = $("#txtLatitude").val();
 		var longitude = $("#txtLongitude").val();
+		var raio = $("input[name='radioRaio']:checked").val();
 		
 		$.ajax({
 			url : "consultarEmpresas",
 			type : "POST",
 			data : {
 				latitude : latitude,
-				longitude : longitude
+				longitude : longitude,
+				raio : raio
 			},
 			success : function(data) {
 				$('#tabelaEmpresaAjax').html(data);

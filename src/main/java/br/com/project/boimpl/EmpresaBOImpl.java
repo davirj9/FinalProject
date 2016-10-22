@@ -6,7 +6,9 @@ package br.com.project.boimpl;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.modelo.Empresa;
+import br.com.project.vo.EmpresaVO;
 
 /**
  * @author Maçana
@@ -28,10 +31,49 @@ public class EmpresaBOImpl implements EmpresaBO{
 	@Autowired
 	private EmpresaDAO empresaDAO;
 	
+	@Override
+	public Collection<EmpresaVO> buscaEmpresasLatLong(String latitude, String longitude, Integer raio){
+		
+		Collection<EmpresaVO> empresas = new ArrayList<EmpresaVO>(); 
+		
+		empresas = adicionarDadosEmpresas(empresaDAO.buscarEmpresasPorLatLong(latitude, longitude, raio));
+		
+		return empresas;
+	}
+	
+	@Override
+	public Collection<EmpresaVO> adicionarDadosEmpresas(List<Object[]> list){
+		
+		List<EmpresaVO> empresas = new ArrayList<>();
+		
+		for(Object[] obj : list){
+			EmpresaVO empresa = new EmpresaVO();
+			Object[] objUnit = (Object[]) obj;
+			
+			empresa.setIdtEmpresa((Integer) objUnit[0]);
+			empresa.setNomeEmpresa((String) objUnit[1]);
+			empresa.setBairro((String) objUnit[2]);
+			empresa.setComplemento_endereco((String) objUnit[3]);
+			empresa.setDescricao_logradouro((String) objUnit[4]);
+			empresa.setNumero((String) objUnit[5]);
+			empresa.setNumCep((String) objUnit[6]);
+			empresa.setLatitude((String) objUnit[7]);
+			empresa.setLongitude((String) objUnit[8]);
+			empresa.setDescricaoPerfil((String) objUnit[9]);
+			empresa.setDistancia((Double) objUnit[10]);
+			
+			empresas.add(empresa);
+		}
+		
+		return empresas;
+	}
+	
+	@Override
 	public Collection<Empresa> buscaEmpresas(String estado){
 		return empresaDAO.buscarEmpresasPorFiltro(estado);		
 	}
 	
+	@Override
 	public String getEstado(String latitude, String longitude) throws JSONException, Exception{
 		
 		String estado = null;
@@ -55,6 +97,7 @@ public class EmpresaBOImpl implements EmpresaBO{
 		return estado;
 	}
 
+	@Override
 	public String readUrl(String urlString) throws Exception {
 		BufferedReader reader = null;
 		try {

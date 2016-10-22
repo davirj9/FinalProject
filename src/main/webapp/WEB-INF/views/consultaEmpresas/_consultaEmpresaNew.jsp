@@ -21,6 +21,11 @@
            		<input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
             
 			</div>
+			
+			<input type="radio" name="radioRaio" value="2" checked="checked"/> 2km <br />
+			<input type="radio" name="radioRaio" value="5"/> 5km <br />
+			<input type="radio" name="radioRaio" value="8"/> 8KM <br />
+			
 			<select id="perfis" name="perfis">
 			    <c:forEach var="perfis" items="${p}">
 			    	<option value="${perfis.idtPerfil}">${perfis.descricaoPerfil}</option>
