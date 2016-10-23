@@ -95,11 +95,12 @@ $(document).ready(function () {
 	
 	$("#consultarEmpresas").submit(function(event) {
 		event.preventDefault();
-			
+		
 		var endereco = $("#txtEndereco").val();
 		var latitude = $("#txtLatitude").val();
 		var longitude = $("#txtLongitude").val();
 		var raio = $("input[name='radioRaio']:checked").val();
+		var perfis = $("#idtPerfis").val();
 		
 		$.ajax({
 			url : "consultarEmpresas",
@@ -107,7 +108,8 @@ $(document).ready(function () {
 			data : {
 				latitude : latitude,
 				longitude : longitude,
-				raio : raio
+				raio : raio,
+				perfis : perfis
 			},
 			success : function(data) {
 				$('#tabelaEmpresaAjax').html(data);

@@ -32,11 +32,11 @@ public class EmpresaBOImpl implements EmpresaBO{
 	private EmpresaDAO empresaDAO;
 	
 	@Override
-	public Collection<EmpresaVO> buscaEmpresasLatLong(String latitude, String longitude, Integer raio){
+	public Collection<EmpresaVO> buscaEmpresasLatLong(String latitude, String longitude, String raio, String perfil){
 		
 		Collection<EmpresaVO> empresas = new ArrayList<EmpresaVO>(); 
 		
-		empresas = adicionarDadosEmpresas(empresaDAO.buscarEmpresasPorLatLong(latitude, longitude, raio));
+		empresas = adicionarDadosEmpresas(empresaDAO.buscarEmpresasPorLatLong(latitude, longitude, raio, perfil));
 		
 		return empresas;
 	}

@@ -24,11 +24,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import antlr.Utils;
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.dao.PerfilEmpresaDAO;
 import br.com.project.modelo.Empresa;
 import br.com.project.modelo.PerfilEmpresa;
+import br.com.project.util.BusinessException;
+import br.com.project.util.Util;
 import br.com.project.vo.EmpresaVO;
 
 /**
@@ -52,8 +55,8 @@ public class EmpresaController {
 	}*/
 	
 	@RequestMapping("/carregarFindHere")
-	public ModelAndView carregarIndex(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView modelAndView = new ModelAndView("../../index2"); 
+	public ModelAndView carregarIndex(){
+		ModelAndView modelAndView = new ModelAndView("index2"); 
 		
 		List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
 		modelAndView.addObject("perfis", perfis);
@@ -65,17 +68,17 @@ public class EmpresaController {
 	 public String consultarEmpresas(Model model, HttpServletRequest request) throws JSONException, Exception{
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
-		Integer raio = Integer.parseInt(request.getParameter("raio"));
+		String raio = request.getParameter("raio");
+		String perfil = request.getParameter("perfis");
 		
-		//String estado = empresaBO.getEstado(latitude, longitude);
-		
-		//List<Empresa> empresas = empresaDAO.buscarEmpresasPorFiltro(estado);
-		
-		Collection<EmpresaVO> empresas = empresaBO.buscaEmpresasLatLong(latitude, longitude, raio);
-		
-		model.addAttribute("empresas", empresas);
-		//model.addAttribute("empresas", empresaVO);
-		
+		if(Util.isOk(latitude) && Util.isOk(longitude) && Util.isOk(raio) && Util.isOk(perfil)){
+			Collection<EmpresaVO> empresas = empresaBO.buscaEmpresasLatLong(latitude, longitude, raio, perfil);
+			model.addAttribute("empresas", empresas);
+			
+		}if(!Util.isOk(latitude) && !Util.isOk(longitude) && !Util.isOk(raio)){
+			throw new BusinessException("Favor, informar um endereço");
+			
+		}
 		return "consultaEmpresas/_resultadoConsultaEmpresa";
 	}
 	

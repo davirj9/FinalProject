@@ -18,7 +18,7 @@ public interface EmpresaDAO {
 	
 	public abstract List<Empresa> buscarEmpresasPorFiltro(String estado);
 	public abstract Empresa consultaPorIdt(Integer idtEmpresa);
-	public abstract List<Object[]> buscarEmpresasPorLatLong(String latitude, String longitude, Integer raio);
+	public abstract List<Object[]> buscarEmpresasPorLatLong(String latitude, String longitude, String raio, String perfil);
 	public abstract List<Empresa> consultaPorIdts(String idtEmpresa);
 
 }

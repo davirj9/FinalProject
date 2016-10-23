@@ -20,6 +20,6 @@ public interface EmpresaBO {
 	public abstract Collection<Empresa> buscaEmpresas(String estado);
 	public abstract String getEstado(String Latitude, String Longitude) throws JSONException, Exception;
 	public abstract String readUrl(String urlString) throws Exception;
-	public abstract Collection<EmpresaVO> buscaEmpresasLatLong(String latitude, String longitude, Integer raio);
+	public abstract Collection<EmpresaVO> buscaEmpresasLatLong(String latitude, String longitude, String raio, String perfil);
 	public abstract Collection<EmpresaVO> adicionarDadosEmpresas(List<Object[]> list);
 }

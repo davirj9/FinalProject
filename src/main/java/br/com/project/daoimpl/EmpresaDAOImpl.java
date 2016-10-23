@@ -67,7 +67,7 @@ private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Object[]> buscarEmpresasPorLatLong(String latitude, String longitude, Integer raio){
+	public List<Object[]> buscarEmpresasPorLatLong(String latitude, String longitude, String raio, String perfil){
 		StringBuilder sql = new StringBuilder();
 		
 		sql.append("SELECT e.idt_empresa, e.nome_empresa, ee.bairro, ee.complemento_endereco, ee.logradouro, ee.numero, ee.NUM_CEP, ee.latitude, ee.longitude, pe.descricao_perfil,"); 
@@ -77,6 +77,7 @@ private EntityManager entityManager;
 		sql.append(" FROM endereco_empresa ee");
 		sql.append(" inner join empresa e on e.idt_endereco = ee.idt_endereco");
 		sql.append(" inner join perfilempresa pe on pe.idt_perfil = e.idt_perfil");
+		sql.append(" where pe.idt_perfil = ?4");
 		sql.append(" HAVING distance < ?3 ORDER BY distance LIMIT 0, 100");
 		
 		Query query = entityManager.createNativeQuery(sql.toString());
@@ -84,6 +85,7 @@ private EntityManager entityManager;
 		query.setParameter(1, latitude);
 		query.setParameter(2, longitude);
 		query.setParameter(3, raio);
+		query.setParameter(4, perfil);
 		
 		List<Object[]> list = query.getResultList();
 		/*String idtsEmpresas = new String();

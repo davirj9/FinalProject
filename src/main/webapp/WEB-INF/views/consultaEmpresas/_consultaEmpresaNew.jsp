@@ -19,28 +19,28 @@
             	<label for="txtEndereco">Endereço:</label>
            		<input type="text" id="txtEndereco" name="txtEndereco" />
            		<input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
-            
 			</div>
 			
-			<input type="radio" name="radioRaio" value="2" checked="checked"/> 2km <br />
+			<input type="radio" name="radioRaio" value="2"/> 2km <br />
 			<input type="radio" name="radioRaio" value="5"/> 5km <br />
 			<input type="radio" name="radioRaio" value="8"/> 8KM <br />
 			
-			<select id="perfis" name="perfis">
-			    <c:forEach var="perfis" items="${p}">
-			    	<option value="${perfis.idtPerfil}">${perfis.descricaoPerfil}</option>
-				</c:forEach>
-			</select>
+			<div class="input input-group-sm">
+				<select name="idtPerfis" id="idtPerfis" class="selectpicker">
+					<c:forEach var="row" items="${perfis}" varStatus="i">
+						<option value="<c:out value="${row.idtPerfil}"/>" data-subtext="<c:out value="${row.descricaoPerfil}"/>"><c:out value="${row.descricaoPerfil}" /></option>
+					</c:forEach>
+				</select>
+			</div>
+			
 			<div id="mapa"></div>  
 			<br>	
-					
-                    <input type="image" value="Enviar" id="btnEnviar" class="btnEnviar" name="btnEnviar" 
-					value="Enviar" src="webstuff/img/buscar.fw.png"></input>
-					<input type="hidden" id="txtLatitude" name="txtLatitude" />
-                    <input type="hidden" id="txtLongitude" name="txtLongitude" />
-					<input type="hidden" id="txtEstado" name="txtEstado" />
-					<input type="hidden" id="txtCidade" name="txtCidade" />
-					<input type="hidden" id="txtPais" name="txtPais" />
+			
+	        <input type="image" value="Enviar" id="btnEnviar" class="btnEnviar" name="btnEnviar" 
+				value="Enviar" src="webstuff/img/buscar.fw.png"></input>
+			<input type="hidden" id="txtLatitude" name="txtLatitude" />
+	        <input type="hidden" id="txtLongitude" name="txtLongitude" />
+	        
 		</fieldset>
         </form>
 	</div>
