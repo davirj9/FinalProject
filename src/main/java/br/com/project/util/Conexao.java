@@ -10,7 +10,7 @@ public class Conexao {
 
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("System");
 
-		    factory.close();
+		factory.close();
 		
 	}
 

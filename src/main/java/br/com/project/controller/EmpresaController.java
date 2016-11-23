@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
@@ -115,5 +116,17 @@ public class EmpresaController {
 		}catch(Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	@RequestMapping("/editarCadastrarEmpresa")
+	public String editarCadastrarEmpresa(HttpServletRequest request, Model model) throws Exception{
+		try {
+			List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
+			model.addAttribute("perfis", perfis);
+			
+		}catch(Exception e){
+			System.out.println(e);
+		 }
+	return "consultaEmpresas/cadastrarEditarEmpresa";
 	}
 }
