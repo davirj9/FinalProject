@@ -10,4 +10,6 @@ public interface UsuarioDAO {
 	public abstract Usuario buscaIdtUsuario(Long idUsuario);
 	public abstract Collection<Usuario> buscarUsuarios();
 	public abstract Boolean autenticaUsuario(Usuario usuario) throws Exception;
+	public abstract Long idtUsuario();
+	public abstract Usuario buscaUsuario(Usuario usuario);
 }

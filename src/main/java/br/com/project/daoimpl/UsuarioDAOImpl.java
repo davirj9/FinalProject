@@ -1,27 +1,19 @@
 package br.com.project.daoimpl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysql.jdbc.PreparedStatement;
-
 import br.com.project.dao.UsuarioDAO;
+import br.com.project.modelo.Empresa;
 import br.com.project.modelo.Usuario;
-import br.com.project.util.Util;
 
 @Repository
 public class UsuarioDAOImpl implements UsuarioDAO{
@@ -106,6 +98,33 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		return (Collection<Object>) query.getResultList();
 	}
 	
+	@Override
+	public Long idtUsuario() {
+		
+		StringBuilder jpql = new StringBuilder();
+    	jpql.append("SELECT COUNT(e.idtUsuario) + 1 FROM Usuario AS e ");
+		
+    	Query query = entityManager.createQuery(jpql.toString());
+		
+		Long idtUsuario = (Long) query.getSingleResult();
+		
+		return idtUsuario;	
+	}
 	
+	@Override
+	public Usuario buscaUsuario(Usuario usuario) {
+
+		String jpql = "FROM Usuario u WHERE u.emailUsuario = ?1 ";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter(1, usuario.getEmailUsuario());
+		
+		return (Usuario) query.getSingleResult();
+		
+		/*usuario = (Usuario) entityManager.createQuery("SELECT u FROM Usuario u WHERE u.emailUsuario = ?1")
+				 .setParameter("?1", usuario.getEmailUsuario())
+				 .getSingleResult();
+		
+		return usuario;*/	
+	}
 	
 }	

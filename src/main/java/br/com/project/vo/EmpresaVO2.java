@@ -11,41 +11,24 @@ import br.com.project.modelo.Usuario;
  * @author Maçana
  *
  */
-public class EmpresaVO {
+public class EmpresaVO2 {
 	
-	protected Long idtEmpresa;
-	protected Long idtEnderecoEmpresa;
-	protected Usuario usuarioLogado;
-	protected String nomeEmpresa;
-	protected String bairro;
-	protected String complemento_endereco;
-	protected String descricao_logradouro;
-	protected String numero;
-	protected String numCep;
-	protected String latitude;
-	protected String longitude;
-	protected String descricaoPerfil;
-	protected String uf;
-	protected Double distancia;
-	protected Date dataInclusao;
-	protected Long idtPerfil;
+	private Integer idtEmpresa;
+	private String nomeEmpresa;
+	private String bairro;
+	private String complemento_endereco;
+	private String descricao_logradouro;
+	private String numero;
+	private String numCep;
+	private String latitude;
+	private String longitude;
+	private String descricaoPerfil;
+	private Double distancia;
 	
-	public Long getIdtEmpresa() {
+	public Integer getIdtEmpresa() {
 		return idtEmpresa;
 	}
-	public Long getIdtEnderecoEmpresa() {
-		return idtEnderecoEmpresa;
-	}
-	public void setIdtEnderecoEmpresa(Long idtEnderecoEmpresa) {
-		this.idtEnderecoEmpresa = idtEnderecoEmpresa;
-	}
-	public Usuario getUsuarioLogado() {
-		return usuarioLogado;
-	}
-	public void setUsuarioLogado(Usuario usuarioLogado) {
-		this.usuarioLogado = usuarioLogado;
-	}
-	public void setIdtEmpresa(Long idtEmpresa) {
+	public void setIdtEmpresa(Integer idtEmpresa) {
 		this.idtEmpresa = idtEmpresa;
 	}
 	public String getNomeEmpresa() {
@@ -107,23 +90,5 @@ public class EmpresaVO {
 	}
 	public void setDistancia(Double distancia) {
 		this.distancia = distancia;
-	}
-	public String getUf() {
-		return uf;
-	}
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-	public Date getDataInclusao() {
-		return dataInclusao;
-	}
-	public void setDataInclusao(Date dataInclusao) {
-		this.dataInclusao = dataInclusao;
-	}
-	public Long getIdtPerfil() {
-		return idtPerfil;
-	}
-	public void setIdtPerfil(Long idtPerfil) {
-		this.idtPerfil = idtPerfil;
 	}
 }

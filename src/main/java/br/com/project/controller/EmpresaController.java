@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,17 +31,21 @@ import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.dao.PerfilEmpresaDAO;
 import br.com.project.modelo.Empresa;
+import br.com.project.modelo.EnderecoEmpresa;
 import br.com.project.modelo.PerfilEmpresa;
+import br.com.project.modelo.Usuario;
 import br.com.project.util.BusinessException;
 import br.com.project.util.Util;
+import br.com.project.util.buscaEnderecoLatLong;
 import br.com.project.vo.EmpresaVO;
+import br.com.project.vo.EmpresaVO2;
 
 /**
  * @author Maçana
  *
  */
 @Controller
-public class EmpresaController {
+public class EmpresaController extends buscaEnderecoLatLong{
 	
 	@Autowired
 	private EmpresaDAO empresaDAO;
@@ -73,7 +78,7 @@ public class EmpresaController {
 		String perfil = request.getParameter("perfis");
 		
 		if(Util.isOk(latitude) && Util.isOk(longitude) && Util.isOk(raio) && Util.isOk(perfil)){
-			Collection<EmpresaVO> empresas = empresaBO.buscaEmpresasLatLong(latitude, longitude, raio, perfil);
+			Collection<EmpresaVO2> empresas = empresaBO.buscaEmpresasLatLong(latitude, longitude, raio, perfil);
 			model.addAttribute("empresas", empresas);
 			
 		}if(!Util.isOk(latitude) && !Util.isOk(longitude) && !Util.isOk(raio)){
@@ -123,6 +128,33 @@ public class EmpresaController {
 		try {
 			List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
 			model.addAttribute("perfis", perfis);
+			
+		}catch(Exception e){
+			System.out.println(e);
+		 }
+	return "consultaEmpresas/cadastrarEditarEmpresa";
+	}
+	
+	@RequestMapping("/cadastrarEmpresa")
+	public String cadastrarEmpresa(HttpServletRequest request, Model model) throws Exception{
+		try {
+			buscaEnderecoLatLong enderecoLatLong = new buscaEnderecoLatLong();
+			EmpresaVO empresaVO = new EmpresaVO();
+			
+			HttpSession httpsession = request.getSession();
+	        Usuario usuarioLogado = (Usuario) httpsession.getAttribute("usuarioLogado");
+	        empresaVO.setUsuarioLogado(usuarioLogado);
+	        
+			empresaVO.setLatitude(request.getParameter("latitude"));
+			empresaVO.setLongitude(request.getParameter("longitude"));
+			empresaVO.setIdtPerfil(Long.parseLong(request.getParameter("perfis")));
+			empresaVO.setNomeEmpresa(request.getParameter("nomeEmpresa"));
+			
+			empresaVO = enderecoLatLong.getDados(empresaVO);
+			
+			empresaVO = empresaBO.adicionaEditaEmpresa(empresaVO);
+			
+			model.addAttribute("empresaVO", empresaVO);
 			
 		}catch(Exception e){
 			System.out.println(e);

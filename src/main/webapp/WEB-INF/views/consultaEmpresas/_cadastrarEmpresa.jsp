@@ -15,18 +15,23 @@
 		<fieldset>
 			<div class="campos">
 				<div class="input input-group-sm">
+				<b>Perfil da Empresa:</b> <br>
 					<select name="idtPerfis" id="idtPerfis" class="selectpicker">
 						<c:forEach var="row" items="${perfis}" varStatus="i">
 							<option value="<c:out value="${row.idtPerfil}"/>" data-subtext="<c:out value="${row.descricaoPerfil}"/>"><c:out value="${row.descricaoPerfil}" /></option>
 						</c:forEach>
 					</select>
-				</div>
+				</div> <br>
 				
-				<label type="text">Nome da Empresa:</label>
-				<input type="text" id="txtNomeEmp" name="txtNomeEmp" />
-					
-				<label for="txtEndereco">Endereço:</label>
-				<input type="text" id="txtEndereco" name="txtEndereco" />
+				<b>Nome da Empresa:</b> <br>
+				<input type="text" id="txtNomeEmp" name="txtNomeEmp" /> <br><br>
+				
+				<b>Endereço da Empresa:</b> <br>
+				<input type="text" id="txtEndereco" name="txtEndereco" /> <br><br>
+				
+				<b>Complemento Endereço:</b> <br>
+				<input type="text" id="txtComplEnd" name="txtComplEnd" /> <br><br>
+				
 			</div>
 				
 			<div id="mapa"  style="display: none;"></div>  

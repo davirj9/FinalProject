@@ -37,16 +37,16 @@ public class EnderecoEmpresa implements Serializable{
 	private Integer idtEndereco;
 
 	@Column(name = "bairro")
-	private String bairro;
+	protected String bairro;
 	
 	@Column(name = "uf")
-	private String uf;
+	protected String uf;
 
-	@Column(name = "logradouro")  
-    private String descricao_logradouro;
+	@Column(name = "logradouro")
+	protected String descricao_logradouro;
 	
-	@Column(name = "numero")  
-    private String numero;
+	@Column(name = "numero")
+	protected String numero;
 	
 	@Column(name="complemento_endereco")
 	private String complemento_endereco;
@@ -55,8 +55,8 @@ public class EnderecoEmpresa implements Serializable{
 	@Column(name = "data_inclusao")
 	private Date data_inclusao;
 	
-	@Column(name = "NUM_CEP")  
-    private String numCep;
+	@Column(name = "NUM_CEP")
+	protected String numCep;
 	
 	@Column(name="latitude")
 	private String latitude;

@@ -15,11 +15,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.mysql.fabric.xmlrpc.base.Data;
 
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
+import br.com.project.dao.EnderecoEmpresaDAO;
+import br.com.project.dao.UsuarioDAO;
 import br.com.project.modelo.Empresa;
+import br.com.project.modelo.EnderecoEmpresa;
 import br.com.project.vo.EmpresaVO;
+import br.com.project.vo.EmpresaVO2;
 
 /**
  * @author Maçana
@@ -31,23 +38,29 @@ public class EmpresaBOImpl implements EmpresaBO{
 	@Autowired
 	private EmpresaDAO empresaDAO;
 	
+	@Autowired
+	private EnderecoEmpresaDAO enderecoEmpresaDAO;
+	
+	@Autowired
+	private UsuarioDAO usuarioDAO;
+	
 	@Override
-	public Collection<EmpresaVO> buscaEmpresasLatLong(String latitude, String longitude, String raio, String perfil){
+	public Collection<EmpresaVO2> buscaEmpresasLatLong(String latitude, String longitude, String raio, String perfil){
 		
-		Collection<EmpresaVO> empresas = new ArrayList<EmpresaVO>(); 
+		Collection<EmpresaVO2> empresas2 = new ArrayList<EmpresaVO2>(); 
 		
-		empresas = adicionarDadosEmpresas(empresaDAO.buscarEmpresasPorLatLong(latitude, longitude, raio, perfil));
+		empresas2 = adicionarDadosEmpresas(empresaDAO.buscarEmpresasPorLatLong(latitude, longitude, raio, perfil));
 		
-		return empresas;
+		return empresas2;
 	}
 	
 	@Override
-	public Collection<EmpresaVO> adicionarDadosEmpresas(List<Object[]> list){
+	public Collection<EmpresaVO2> adicionarDadosEmpresas(List<Object[]> list){
 		
-		List<EmpresaVO> empresas = new ArrayList<>();
+		Collection<EmpresaVO2> empresas = new ArrayList<>();
 		
 		for(Object[] obj : list){
-			EmpresaVO empresa = new EmpresaVO();
+			EmpresaVO2 empresa = new EmpresaVO2();
 			Object[] objUnit = (Object[]) obj;
 			
 			empresa.setIdtEmpresa((Integer) objUnit[0]);
@@ -114,5 +127,18 @@ public class EmpresaBOImpl implements EmpresaBO{
 			if (reader != null)
 				reader.close();
 		}
+	}
+	
+	@Override
+	@Transactional
+	public EmpresaVO adicionaEditaEmpresa(EmpresaVO empresaVO) throws Exception{
+		
+		empresaVO.setIdtEnderecoEmpresa(enderecoEmpresaDAO.idtEndereco());
+		empresaVO.setIdtEmpresa(empresaDAO.idtEmpresa());
+		
+		enderecoEmpresaDAO.inserir(empresaVO);
+		empresaDAO.inserir(empresaVO);
+		
+		return empresaVO;
 	}
 }

@@ -96,31 +96,21 @@ $(document).ready(function () {
 	$("#consultarEmpresas").submit(function(event) {
 		event.preventDefault();
 		
-		var endereco = $("#txtEndereco").val();
 		var latitude = $("#txtLatitude").val();
 		var longitude = $("#txtLongitude").val();
-		var raio = $("input[name='radioRaio']:checked").val();
 		var perfis = $("#idtPerfis").val();
+		var nomeEmpresa = $("#txtNomeEmp").val();
 		
 		$.ajax({
-			url : "consultarEmpresas",
+			url : "cadastrarEmpresa",
 			type : "POST",
 			data : {
 				latitude : latitude,
 				longitude : longitude,
-				raio : raio,
-				perfis : perfis
+				perfis : perfis,
+				nomeEmpresa : nomeEmpresa
 			},
-			success : function(data) {
-				$('#tabelaEmpresaAjax').html(data);
-				$('.infoTooltip').removeData('tooltip'); 
-				$(".infoTooltip").tooltip({
-					 hide: {
-						 effect: "explode",
-						 delay: 250
-					 }
-				});
-			}
+			success : function(data) {}
 		})
 	});
 });

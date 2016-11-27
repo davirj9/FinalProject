@@ -47,6 +47,8 @@ public class LoginController {
 	@RequestMapping("/efetuarLoginUsuario")
 	public String loginUsuario(Usuario usuario, HttpServletRequest request, Model model) throws Exception{
 		if(usuarioDAO.autenticaUsuario(usuario)){
+			usuario = usuarioDAO.buscaUsuario(usuario);
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("usuarioLogado", usuario);
 			model.addAttribute("usuarioLogado",usuario.getEmailUsuario().toUpperCase());

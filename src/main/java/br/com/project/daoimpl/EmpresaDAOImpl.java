@@ -3,6 +3,8 @@
  */
 package br.com.project.daoimpl;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,9 +16,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.modelo.Empresa;
+import br.com.project.modelo.EnderecoEmpresa;
 import br.com.project.vo.EmpresaVO;
 
 /**
@@ -117,5 +121,42 @@ private EntityManager entityManager;
 			System.out.println(e);
 		}
 		return null;
+	}
+	
+	@Override
+	@Transactional
+	public void inserir(EmpresaVO empresaVO){
+		
+		StringBuilder sql = new StringBuilder();
+		
+		Date data = new Date(System.currentTimeMillis());  
+		SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd"); 
+		
+		sql.append("insert into empresa (idt_empresa, data_inclusao, nome_empresa, idt_endereco, idt_perfil, idt_usuario) "
+				+ "values (?, ?, ?, ?, ?, ?);");
+				
+		entityManager.createNativeQuery(sql.toString()).
+			setParameter(1, empresaVO.getIdtEmpresa()).
+			setParameter(2, formatarDate.format(data)).
+			setParameter(3, empresaVO.getNomeEmpresa()).
+			setParameter(4, empresaVO.getIdtEnderecoEmpresa()).
+			setParameter(5, empresaVO.getIdtPerfil()).
+			setParameter(6, empresaVO.getUsuarioLogado().getIdtUsuario()).
+			executeUpdate();
+		
+	}
+	
+	@Override
+	public Long idtEmpresa() {
+		
+		StringBuilder jpql = new StringBuilder();
+    	jpql.append("SELECT COUNT(e.idtEmpresa) + 1 FROM Empresa AS e ");
+		
+    	Query query = entityManager.createQuery(jpql.toString());
+		
+		Long idtEmpresa = (Long) query.getSingleResult();
+		
+		return idtEmpresa;
+		
 	}
 }
