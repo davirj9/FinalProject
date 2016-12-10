@@ -17,6 +17,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import antlr.Utils;
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
+import br.com.project.dao.EnderecoEmpresaDAO;
 import br.com.project.dao.PerfilEmpresaDAO;
 import br.com.project.modelo.Empresa;
 import br.com.project.modelo.EnderecoEmpresa;
@@ -39,6 +41,7 @@ import br.com.project.util.Util;
 import br.com.project.util.buscaEnderecoLatLong;
 import br.com.project.vo.EmpresaVO;
 import br.com.project.vo.EmpresaVO2;
+import sun.rmi.transport.proxy.HttpReceiveSocket;
 
 /**
  * @author Maçana
@@ -55,6 +58,10 @@ public class EmpresaController extends buscaEnderecoLatLong{
 	
 	@Autowired
 	private PerfilEmpresaDAO perfilEmpresaDAO;
+	
+	@Autowired
+	private EnderecoEmpresaDAO enderecoEmpresaDAO;
+
 	/*@RequestMapping(value="/teste")
 	public String teste(){	
 		return "teste";
@@ -126,8 +133,14 @@ public class EmpresaController extends buscaEnderecoLatLong{
 	@RequestMapping("/editarCadastrarEmpresa")
 	public String editarCadastrarEmpresa(HttpServletRequest request, Model model) throws Exception{
 		try {
+			HttpSession httpsession = request.getSession();
+	        Usuario usuarioLogado = (Usuario) httpsession.getAttribute("usuarioLogado");
+			
+	        List<Empresa> empresas = empresaBO.retornaEmpresasPorUsuario(usuarioLogado);
+	        
 			List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
 			model.addAttribute("perfis", perfis);
+			model.addAttribute("empresas", empresas);
 			
 		}catch(Exception e){
 			System.out.println(e);
@@ -156,9 +169,55 @@ public class EmpresaController extends buscaEnderecoLatLong{
 			
 			model.addAttribute("empresaVO", empresaVO);
 			
+			editarCadastrarEmpresa(request, model);
+			
 		}catch(Exception e){
 			System.out.println(e);
 		 }
 	return "consultaEmpresas/cadastrarEditarEmpresa";
+	}
+	
+	@RequestMapping("/excluirEmpresa")
+	public void excluirEmpresa(HttpServletRequest request, Model model){
+		String Idtempresa = request.getParameter("idtEmpresa");
+		empresaBO.excluirEmpresa(Idtempresa);
+		
+		HttpSession httpsession = request.getSession();
+        Usuario usuarioLogado = (Usuario) httpsession.getAttribute("usuarioLogado");
+		
+        List<Empresa> empresas = empresaBO.retornaEmpresasPorUsuario(usuarioLogado);
+        
+		List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
+		model.addAttribute("perfis", perfis);
+		model.addAttribute("empresas", empresas);
+		
+			
+	}
+	
+	@RequestMapping("/voltarHome")
+	public ModelAndView voltarHome(){
+		ModelAndView modelAndView = new ModelAndView("index2"); 
+		
+		List<PerfilEmpresa> perfis = perfilEmpresaDAO.buscarPerfis();
+		modelAndView.addObject("perfis", perfis);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping("/editarEmpresa")
+	public void editarEmpresa(HttpServletRequest request, Model model){
+		
+		String Idtempresa = request.getParameter("idtEmpresa");
+		String CompEnd = request.getParameter("name");
+		String nomeEmpresa = request.getParameter("nomeEmpresa"); 
+		
+		Empresa emrpesa = empresaDAO.consultaPorIdt(Integer.parseInt(Idtempresa));
+		EnderecoEmpresa enderecoEmpresa = enderecoEmpresaDAO.consultaPorIdt(emrpesa.getEnderecoEmpresa().getIdtEndereco().intValue());
+		
+		emrpesa.setNomeEmpresa(nomeEmpresa);
+		enderecoEmpresa.setComplemento_endereco(CompEnd);
+		
+		enderecoEmpresaDAO.salvar(enderecoEmpresa);
+		empresaDAO.salvar(emrpesa);
 	}
 }

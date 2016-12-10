@@ -17,14 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-
 import br.com.project.bo.EmpresaBO;
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.dao.EnderecoEmpresaDAO;
 import br.com.project.dao.UsuarioDAO;
 import br.com.project.modelo.Empresa;
-import br.com.project.modelo.EnderecoEmpresa;
+import br.com.project.modelo.Usuario;
 import br.com.project.vo.EmpresaVO;
 import br.com.project.vo.EmpresaVO2;
 
@@ -140,5 +138,18 @@ public class EmpresaBOImpl implements EmpresaBO{
 		empresaDAO.inserir(empresaVO);
 		
 		return empresaVO;
+	}
+	
+	@Override
+	public List<Empresa> retornaEmpresasPorUsuario(Usuario usuario){
+		
+		return empresaDAO.retornaEmpresasPorUsuario(usuario);
+	}
+
+	@Override
+	@Transactional
+	public void excluirEmpresa(String idtEmpresa) {
+		Empresa empresa = empresaDAO.consultaPorIdt(Integer.parseInt(idtEmpresa));
+		empresaDAO.excluirEmpresa(empresa);
 	}
 }

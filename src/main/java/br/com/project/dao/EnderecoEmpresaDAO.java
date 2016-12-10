@@ -15,5 +15,6 @@ public interface EnderecoEmpresaDAO {
 	public abstract EnderecoEmpresa salvar(EnderecoEmpresa enderecoEmpresa);
 	public abstract void inserir(EmpresaVO empresaVO) throws Exception;
 	public abstract Long idtEndereco();
+	public abstract	EnderecoEmpresa consultaPorIdt(Integer idtEmpresa);
 
 }

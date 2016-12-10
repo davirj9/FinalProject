@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.project.dao.EnderecoEmpresaDAO;
+import br.com.project.modelo.Empresa;
 import br.com.project.modelo.EnderecoEmpresa;
 import br.com.project.vo.EmpresaVO;
 
@@ -81,4 +83,17 @@ private EntityManager entityManager;
 		
 		return idtEndereco;
 	}
+	
+	@Override
+	public EnderecoEmpresa consultaPorIdt(Integer idtEmpresa){
+		try{
+			return entityManager.find(EnderecoEmpresa.class, idtEmpresa);
+		}catch(NoResultException nre){
+			return null;
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return null;
+	}
+	
 }

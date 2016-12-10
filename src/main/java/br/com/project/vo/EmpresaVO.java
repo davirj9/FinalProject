@@ -15,7 +15,6 @@ public class EmpresaVO {
 	
 	protected Long idtEmpresa;
 	protected Long idtEnderecoEmpresa;
-	protected Usuario usuarioLogado;
 	protected String nomeEmpresa;
 	protected String bairro;
 	protected String complemento_endereco;
@@ -29,6 +28,7 @@ public class EmpresaVO {
 	protected Double distancia;
 	protected Date dataInclusao;
 	protected Long idtPerfil;
+	protected Usuario usuarioLogado;
 	
 	public Long getIdtEmpresa() {
 		return idtEmpresa;

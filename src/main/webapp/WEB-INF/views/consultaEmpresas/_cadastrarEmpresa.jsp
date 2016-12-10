@@ -41,4 +41,7 @@
 			<input type="hidden" id="txtLongitude" name="txtLongitude" />		      
 		</fieldset>
 	</form>
+	<form id="voltarHome">
+			<input type="submit" value="Voltar" action="voltarHome" class="btn btn-mini btn-primary" name="voltarHome"></input>
+	</form>			
 </div>

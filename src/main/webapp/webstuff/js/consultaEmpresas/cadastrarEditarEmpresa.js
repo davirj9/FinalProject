@@ -110,7 +110,57 @@ $(document).ready(function () {
 				perfis : perfis,
 				nomeEmpresa : nomeEmpresa
 			},
-			success : function(data) {}
+			success : function(data) {
+				 location.reload();
+			}
 		})
 	});
+	
+	$("#voltarHome").submit(function(event) {
+		event.preventDefault();
+		
+		$.ajax({
+			url : "voltarHome",
+			type : "POST"
+		})
+	});
+	
+	$(".editarEmpresa").blur(function() {
+		event.preventDefault();
+		var idtEmpresa = $(this).attr("name");
+		var compEnd = $("#compEnd").val();
+		var nomeEmpresa = $("#nomeEmpresa").val();
+		
+		$.ajax({
+			url : "editarEmpresa",
+			type : "POST",
+			data : {
+				idtEmpresa : idtEmpresa,
+				compEnd : compEnd,
+				nomeEmpresa : nomeEmpresa
+			},
+			success : function(data){
+				location.reload();
+			}
+		})
+	})
+	
+	$(".excluirEmpresa").click(function() {
+		var idtEmpresa = $(this).attr("name");
+		$.ajax({
+			url : "excluirEmpresa",
+			type : "POST",
+			data : {
+				idtEmpresa : idtEmpresa
+			},
+			success : function(data){
+				alert('Empresa excluida com sucesso.');
+				location.reload();
+			}
+		})
+	})
+	
+	$("#teste").click(function(){
+		alert('deu certo ;)');
+	})
 });

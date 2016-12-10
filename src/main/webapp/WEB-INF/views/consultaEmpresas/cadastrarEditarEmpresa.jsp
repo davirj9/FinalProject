@@ -42,6 +42,50 @@
 			file="../consultaEmpresas/_cadastrarEmpresa.jsp"%>
 	</div>
 	
+	<div class="panel panel-default panelLogin center">
+		<div class="panel-heading" style="background-color: #475E81;">
+			<h5><b style="margin-left: 7px;">Editar Empresas</b></h5>
+		</div>
+		
+		<table class="table">
+			
+		</table>
+		<table class="table" border="1">	
+			<tbody>
+				<thead>
+					<tr>
+						<th>Nome Empresa</th>
+						<th>Bairro</th>
+						<th>UF</th> 
+						<th>Descrição Logradouro</th>
+						<th>Complemento</th>
+						<th>Número</th>
+						<th>Cep</th>
+						<th>Perfil</th>
+					</tr> 
+					<c:forEach var="e" items="${empresas}" >
+						<tr style="background: #E4FAFF;">
+							<th><input type="text" id="nomeEmpresa" class="editarEmpresa" name="${e.idtEmpresa}" value="${e.nomeEmpresa}"/></th>
+							<th>${e.enderecoEmpresa.bairro}</th>
+							<th>${e.enderecoEmpresa.uf}</th>
+							<th>${e.enderecoEmpresa.descricao_logradouro}</th>
+							<th><input type="text" id="compEnd" class="editarEmpresa" name="${e.idtEmpresa}" value="${e.enderecoEmpresa.complemento_endereco}"/></th>
+							<th>${e.enderecoEmpresa.numero}</th>
+							<th>${e.enderecoEmpresa.numCep}</th>
+							<th><select name="idtPerfis" id="idtPerfis" class="selectpicker">
+									<option value="<c:out value="${e.perfilEmpresa.idtPerfil}"/>" data-subtext="<c:out value="${e.perfilEmpresa.descricaoPerfil}"/>"><c:out value="${e.perfilEmpresa.descricaoPerfil}" /></option>
+								</select>
+							</th>
+							<th><button type="button" id="excluirEmpresa" class="excluirEmpresa" name="${e.idtEmpresa}">
+									<i class="glyphicon glyphicon-remove"></i>
+								</button>
+							</th>
+						</tr>
+					</c:forEach>
+				</thead>		
+			</tbody>
+		</table>
+	</div>
 	<%@ include file="../utils/footer.jsp"%>
 </div>
 	

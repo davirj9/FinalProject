@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.project.dao.EmpresaDAO;
 import br.com.project.modelo.Empresa;
 import br.com.project.modelo.EnderecoEmpresa;
+import br.com.project.modelo.Usuario;
 import br.com.project.vo.EmpresaVO;
 
 /**
@@ -148,7 +149,6 @@ private EntityManager entityManager;
 	
 	@Override
 	public Long idtEmpresa() {
-		
 		StringBuilder jpql = new StringBuilder();
     	jpql.append("SELECT COUNT(e.idtEmpresa) + 1 FROM Empresa AS e ");
 		
@@ -156,7 +156,32 @@ private EntityManager entityManager;
 		
 		Long idtEmpresa = (Long) query.getSingleResult();
 		
-		return idtEmpresa;
-		
+		return idtEmpresa;	
+	}
+	
+	@Override
+	public List<Empresa> retornaEmpresasPorUsuario(Usuario usuario) {
+		try{
+			StringBuilder sql = new StringBuilder();
+			sql.append("FROM Empresa e where e.usuario.idtUsuario = ?1");
+			Query query = entityManager.createQuery(sql.toString());
+			query.setParameter(1, usuario.getIdtUsuario());
+			return (List<Empresa>) query.getResultList();	
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public void excluirEmpresa(Empresa empresa){
+		entityManager.remove(empresa);
+	}
+	
+	@Override
+	@Transactional
+	public void salvar(Empresa empresa){
+		entityManager.merge(empresa);
 	}
 }

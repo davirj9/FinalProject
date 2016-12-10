@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 import br.com.project.modelo.Empresa;
+import br.com.project.modelo.Usuario;
 import br.com.project.vo.EmpresaVO;
 
 
@@ -22,5 +23,8 @@ public interface EmpresaDAO {
 	public abstract List<Empresa> consultaPorIdts(String idtEmpresa);
 	public abstract void inserir(EmpresaVO empresaVO);
 	public abstract Long idtEmpresa();
+	public abstract List<Empresa> retornaEmpresasPorUsuario(Usuario usuario);
+	public abstract void excluirEmpresa(Empresa empresa);
+	public abstract void salvar(Empresa empresa);
 
 }
